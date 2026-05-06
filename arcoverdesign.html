@@ -414,6 +414,10 @@
     .cards-grid {
       display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
     }
+    @media (max-width: 768px) {
+      .how-title { white-space: normal; }
+      .cards-grid { grid-template-columns: 1fr; gap: 16px; }
+    }
 
     /* Scroll-in: cards start invisible and slide up */
     .card {
