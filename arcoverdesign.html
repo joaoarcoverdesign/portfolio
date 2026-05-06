@@ -81,9 +81,12 @@
       width: 100% !important;
     }
 
-    /* Calendly overlay — solid dark background */
-    .calendly-overlay {
+    /* Calendly overlay — solid dark background (all browsers) */
+    .calendly-overlay,
+    body .calendly-overlay,
+    html body .calendly-overlay {
       background: rgba(0, 0, 0, 0.92) !important;
+      background-color: rgba(0, 0, 0, 0.92) !important;
     }
 
     body {
