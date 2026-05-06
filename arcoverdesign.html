@@ -433,9 +433,17 @@
         height: 380px;
         width: 100%;
       }
-      /* Thumbnails: keep desktop rotation, just scale down */
+      /* Thumbnails: keep rotation, center in container */
+      .mock-wrap {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
       .mock-cols {
-        transform: rotate(15deg) translate(40px, -40px);
+        transform: rotate(15deg);
         gap: 10px;
         height: 700px;
       }
@@ -444,11 +452,6 @@
       .mock-ph { width: 160px; height: 200px; }
       .mock-ph.sm { height: 140px; }
       .mock-ph.lg { height: 260px; }
-      .mock-wrap {
-        position: absolute;
-        inset: 0;
-        overflow: hidden;
-      }
     }
 
     /* Scroll-in: cards start invisible and slide up */
