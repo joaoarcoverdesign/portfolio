@@ -418,6 +418,18 @@
       .how-title { white-space: normal; }
       .cards-grid { grid-template-columns: 1fr; gap: 16px; }
 
+      /* Footer — logo + lang on same row, nav below */
+      footer.new-footer {
+        display: grid !important;
+        grid-template-areas: "left right" "nav nav" !important;
+        grid-template-columns: 1fr auto !important;
+        gap: 24px 12px !important;
+      }
+      .footer-left { grid-area: left; }
+      .footer-center-links { grid-area: nav; gap: 14px !important; }
+      .footer-right-col { grid-area: right; align-items: flex-end !important; align-self: start; }
+      .footer-copy { text-align: right; }
+
       /* Fix note text cut on mobile */
       .hero-note { white-space: normal !important; text-align: center; }
       /* CTA section padding */
