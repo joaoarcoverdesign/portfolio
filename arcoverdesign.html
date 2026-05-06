@@ -278,7 +278,7 @@
       margin-bottom: 40px;
     }
     .hero-cta { display: flex; flex-direction: column; align-items: center; gap: 14px; }
-    .hero-note { font-size: 14px; color: var(--muted); white-space: nowrap; }
+    .hero-note { font-size: 14px; color: var(--muted); white-space: nowrap; text-align: center; }
 
     /* ── CARD BACKGROUND PATTERNS ──────────────── */
 
@@ -417,6 +417,10 @@
     @media (max-width: 768px) {
       .how-title { white-space: normal; }
       .cards-grid { grid-template-columns: 1fr; gap: 16px; }
+
+      /* Hero title — reduce size, fix note overflow */
+      .hero-title { font-size: 38px !important; line-height: 1.1 !important; }
+      .hero-note { white-space: normal !important; text-align: center; }
 
       /* Testimonials — single column */
       .test-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
