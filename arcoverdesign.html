@@ -418,6 +418,15 @@
       .how-title { white-space: normal; }
       .cards-grid { grid-template-columns: 1fr; gap: 16px; }
 
+      /* Stats bar — vertical stack */
+      .stats-bar { grid-template-columns: 1fr; }
+      .stat {
+        padding: 28px 24px;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+      .stat:last-child { border-bottom: none; }
+
       /* Feature section — stack vertically */
       .feature-box {
         display: flex !important;
