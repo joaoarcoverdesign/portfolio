@@ -417,6 +417,41 @@
     @media (max-width: 768px) {
       .how-title { white-space: normal; }
       .cards-grid { grid-template-columns: 1fr; gap: 16px; }
+
+      /* Feature section — stack vertically */
+      .feature-box {
+        grid-template-columns: 1fr;
+        min-height: unset;
+      }
+      .feature-content {
+        padding: 40px 24px;
+        gap: 20px;
+      }
+      .feature-visual {
+        height: 420px;
+      }
+      /* Thumbnails: straight column, no rotation */
+      .mock-cols {
+        transform: none;
+        gap: 12px;
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        overflow-y: auto;
+        padding: 16px 0;
+      }
+      .mock-col {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 12px;
+        justify-content: center;
+      }
+      .mock-col.shift { margin-top: 0; }
+      .mock-ph { width: 45%; height: 160px; }
+      .mock-ph.sm { height: 120px; }
+      .mock-ph.lg { height: 200px; }
+      .mock-wrap { overflow-y: auto; align-items: flex-start; padding: 16px; }
     }
 
     /* Scroll-in: cards start invisible and slide up */
