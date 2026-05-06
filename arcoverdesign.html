@@ -433,31 +433,21 @@
         height: 380px;
         width: 100%;
       }
-      /* Thumbnails: straight, no rotation */
+      /* Thumbnails: keep desktop rotation, just scale down */
       .mock-cols {
-        transform: none !important;
-        gap: 12px;
-        height: auto;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: flex-start;
-        padding: 16px;
-        width: 100%;
+        transform: rotate(15deg) translate(40px, -40px);
+        gap: 10px;
+        height: 700px;
       }
-      .mock-col {
-        width: calc(50% - 6px);
-        flex-direction: column;
-        gap: 12px;
-      }
-      .mock-col.shift { margin-top: 0; }
-      .mock-ph { width: 100%; height: 150px; }
-      .mock-ph.sm { height: 110px; }
-      .mock-ph.lg { height: 190px; }
+      .mock-col { width: 160px; gap: 10px; }
+      .mock-col.shift { margin-top: -100px; }
+      .mock-ph { width: 160px; height: 200px; }
+      .mock-ph.sm { height: 140px; }
+      .mock-ph.lg { height: 260px; }
       .mock-wrap {
-        position: relative;
+        position: absolute;
+        inset: 0;
         overflow: hidden;
-        align-items: flex-start;
-        padding: 0;
       }
     }
 
