@@ -415,7 +415,24 @@
       display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
     }
     @media (max-width: 768px) {
+      /* Global overflow fix */
+      html, body { overflow-x: hidden !important; }
+      .wrap { padding: 0 20px !important; }
+      .sec { padding-left: 0 !important; padding-right: 0 !important; }
+
+      /* Buttons — allow wrapping, no overflow */
+      .btn, .btn-hero, .btn-white-outline {
+        white-space: normal !important;
+        text-align: center !important;
+      }
+
+      /* Section headings */
       .how-title { white-space: normal; }
+      .section-h, .sec-title, .feature-title {
+        font-size: clamp(28px, 7vw, 40px) !important;
+        white-space: normal !important;
+      }
+
       .cards-grid { grid-template-columns: 1fr; gap: 16px; }
 
       /* Footer langs + copyright align left */
