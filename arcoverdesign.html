@@ -150,7 +150,7 @@
       display: none;
       position: fixed; inset: 72px 0 0 0;
       background: #1A2025;
-      z-index: 99;
+      z-index: 999;
       flex-direction: column;
       padding: 32px 24px 40px;
       opacity: 0;
@@ -2028,20 +2028,20 @@ document.addEventListener('DOMContentLoaded', function() {
       <span></span><span></span><span></span>
     </button>
   </div>
-
-  <!-- Mobile drawer -->
-  <div class="nav-drawer" id="navDrawer">
-    <ul>
-      <li><a href="#how-it-works" class="drawer-link">How it works</a></li>
-      <li><a href="#pricing" class="drawer-link">Pricing</a></li>
-      <li><a href="#why-us" class="drawer-link">Why us</a></li>
-      <li><a href="#about" class="drawer-link">About</a></li>
-    </ul>
-    <div class="drawer-cta">
-      <a href="#" onclick="openCalendly(event)" class="btn btn-primary">Book a call</a>
-    </div>
-  </div>
 </nav>
+
+<!-- Mobile drawer — outside <nav> to avoid stacking context trap -->
+<div class="nav-drawer" id="navDrawer">
+  <ul>
+    <li><a href="#how-it-works" class="drawer-link">How it works</a></li>
+    <li><a href="#pricing" class="drawer-link">Pricing</a></li>
+    <li><a href="#why-us" class="drawer-link">Why us</a></li>
+    <li><a href="#about" class="drawer-link">About</a></li>
+  </ul>
+  <div class="drawer-cta">
+    <a href="#" onclick="openCalendly(event)" class="btn btn-primary">Book a call</a>
+  </div>
+</div>
 
 <script>
   (function() {
