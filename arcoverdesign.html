@@ -419,13 +419,13 @@
       .cards-grid { grid-template-columns: 1fr; gap: 16px; }
 
       /* Stats bar — vertical stack */
-      .stats-bar { grid-template-columns: 1fr; }
+      .stats-bar { grid-template-columns: 1fr !important; }
       .stat {
-        padding: 28px 24px;
-        border-right: none;
-        border-bottom: 1px solid var(--border);
+        padding: 28px 24px !important;
+        border-right: none !important;
+        border-bottom: 1px solid var(--border) !important;
       }
-      .stat:last-child { border-bottom: none; }
+      .stat:last-child { border-bottom: none !important; }
 
       /* Feature section — stack vertically */
       .feature-box {
