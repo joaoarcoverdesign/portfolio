@@ -418,14 +418,18 @@
       .how-title { white-space: normal; }
       .cards-grid { grid-template-columns: 1fr; gap: 16px; }
 
-      /* Stats bar — vertical stack */
+      /* Stats bar — vertical stack, icon + text in one row */
       .stats-bar { grid-template-columns: 1fr !important; }
       .stat {
-        padding: 28px 24px !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 16px !important;
+        padding: 22px 24px !important;
         border-right: none !important;
         border-bottom: 1px solid var(--border) !important;
       }
       .stat:last-child { border-bottom: none !important; }
+      .stat .stat-label { text-align: left !important; }
 
       /* Feature section — stack vertically */
       .feature-box {
