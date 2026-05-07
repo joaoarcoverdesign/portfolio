@@ -2662,7 +2662,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <li><span class="chk">✓</span> Executivo de Sucesso do Cliente dedicado — PT e ES nativos, EN fluente</li>
           <li><span class="chk">✓</span> Pause ou cancele quando quiser — sem multa</li>
         </ul>
-        <a href="https://tally.so/r/mZ6YlE" class="btn-lime-block">Começar teste grátis — 7 dias, sem cartão de crédito</a>
+        <a href="https://form.typeform.com/to/Wvc9il7h" target="_blank" rel="noopener" class="btn-lime-block">Começar teste grátis — 7 dias, sem cartão de crédito</a>
         <div class="pricing-annual"><strong>Opção anual:</strong> pague anualmente e economize 10%. Aplicado automaticamente no pagamento.</div>
         <p class="pricing-footnote">Designer sênior CLT custa R$10–18k/mês. A Arcoverdesign entrega o mesmo resultado — sem encargos, sem risco.</p>
       </div>
@@ -2678,7 +2678,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <span class="alt-pill">Landing page, pitch deck…</span>
           <span class="alt-pill">Quem quer testar antes de assinar</span>
         </div>
-        <a href="https://tally.so/r/mZ6YlE" class="btn-outline-alt">Solicitar orçamento →</a>
+        <a href="https://form.typeform.com/to/Wvc9il7h" target="_blank" rel="noopener" class="btn-outline-alt">Solicitar orçamento →</a>
       </div>
     </div>
   </div>
@@ -2766,7 +2766,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <p class="hero-sub">7 dias de teste gratuito. Sem cartão de crédito. Cancele quando quiser.</p>
       <div class="hero-cta">
         <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
-          <a href="https://tally.so/r/mZ6YlE" class="btn btn-hero">Começar teste grátis</a>
+          <a href="https://form.typeform.com/to/Wvc9il7h" target="_blank" rel="noopener" class="btn btn-hero">Começar teste grátis</a>
           <a href="#" onclick="openCalendly(event)" class="btn-white-outline">Agendar call de 30 minutos</a>
         </div>
         <p class="hero-note">Você estará integrado em até 48 horas. Primeira entrega em menos de 72h.</p>
@@ -2989,7 +2989,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<!-- ═══ HERO LOGO — WORD SLOT ANIMATION ═══ -->
+<!-- ═══ HERO LOGO — ORGANIC BLOB ANIMATION ═══ -->
 <script>
 (function () {
   var svg = document.querySelector('#hero-title svg');
@@ -2997,49 +2997,42 @@ document.addEventListener('DOMContentLoaded', function() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   var NS = 'http://www.w3.org/2000/svg';
-  var VH = 152;
 
   /*
-   * 4 segments [x, width] in the 960-wide viewBox:
-   *   A — Arco   0–315
-   *   B — ver  315–529
-   *   C — de   528–697  ← anchored pivot between "verde" and "design"
-   *   D — sign 697–960
+   * One green clip-rect that flows across the logo as a single blob.
+   * Each state is [leftX, rightX] in the 960-wide viewBox.
    *
-   * Transitions:
-   *   Arco   → ver    : A slides up,   B slides in from below
-   *   ver    → verde  : B stays,       C slides in from below
-   *   verde  → design : B fades out,   C stays,  D slides in from below
-   *   design → white  : C+D slide up
+   *   Arco   :   0 – 315
+   *   ver    : 315 – 529
+   *   verde  : 315 – 697   (extends right from ver)
+   *   design : 528 – 960   (left retracts, right extends)
+   *   exit   : 960 – 960   (left catches right → green collapses off right edge)
+   *
+   * Right edge leads with ease-out (arrives first, stretching forward).
+   * Left  edge follows with ease-in (trails behind, compressing to settle).
+   * This creates a natural stretch-and-contract between every word.
    */
-  var SEGS = [
-    [  0, 315],
-    [315, 214],
-    [528, 169],
-    [697, 263],
+  var STATES = [
+    [   0,   0 ],  /* initial: invisible          */
+    [   0, 315 ],  /* Arco                        */
+    [ 315, 529 ],  /* ver                         */
+    [ 315, 697 ],  /* verde                       */
+    [ 528, 960 ],  /* design                      */
+    [ 960, 960 ],  /* exit: collapses to right    */
   ];
-  var SEQUENCE = [
-    [1, 0, 0, 0],
-    [0, 1, 0, 0],
-    [0, 1, 1, 0],
-    [0, 0, 1, 1],
-    [0, 0, 0, 0],
-  ];
-  /* Which segment fades out (instead of sliding) when leaving each step */
-  var FADE_EXIT = [null, null, 1, null, null];
 
-  var SLIDE_MS = 460;
-  var HOLD_MS  = 1600;
-  var PAUSE_MS = 1200;
+  var MOVE_MS  = 680;   /* blob transition duration    */
+  var HOLD_MS  = 1600;  /* hold time per word          */
+  var PAUSE_MS = 1300;  /* pause at all-white          */
 
-  function easeOut(t) { return 1 - Math.pow(1 - t, 4); }
-  function easeIn(t)  { return t * t * t * t; }
+  function easeOut(t) { return 1 - Math.pow(1 - t, 4); }   /* leads  */
+  function easeIn(t)  { return t * t * t; }                 /* trails */
 
   /* ── Base SVG: all white ── */
   var basePaths = Array.from(svg.querySelectorAll('path'));
   basePaths.forEach(function (p) { p.setAttribute('fill', 'white'); });
 
-  /* ── Overlay SVG ── */
+  /* ── Single clipped green overlay ── */
   var over = svg.cloneNode(false);
   over.removeAttribute('style');
   over.removeAttribute('aria-label');
@@ -3047,34 +3040,25 @@ document.addEventListener('DOMContentLoaded', function() {
   over.setAttribute('overflow', 'hidden');
   over.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;';
 
-  var defs = document.createElementNS(NS, 'defs');
-  var yPos    = [VH, VH, VH, VH];
-  var yTarget = [VH, VH, VH, VH];
-  var aPos    = [1,  1,  1,  1];   /* current opacity per group */
-  var aTarget = [1,  1,  1,  1];
+  var defs     = document.createElementNS(NS, 'defs');
+  var cp       = document.createElementNS(NS, 'clipPath');
+  cp.id        = '_blob';
+  var clipRect = document.createElementNS(NS, 'rect');
+  clipRect.setAttribute('x', 0); clipRect.setAttribute('y', 0);
+  clipRect.setAttribute('width', 0); clipRect.setAttribute('height', 152);
+  cp.appendChild(clipRect);
+  defs.appendChild(cp);
 
-  var groups = SEGS.map(function (seg, i) {
-    var cp = document.createElementNS(NS, 'clipPath');
-    cp.id  = '_sg' + i;
-    var r  = document.createElementNS(NS, 'rect');
-    r.setAttribute('x', seg[0]); r.setAttribute('y', 0);
-    r.setAttribute('width', seg[1]); r.setAttribute('height', VH);
-    cp.appendChild(r);
-    defs.appendChild(cp);
-
-    var g = document.createElementNS(NS, 'g');
-    g.setAttribute('clip-path', 'url(#_sg' + i + ')');
-    g.setAttribute('transform', 'translate(0,' + VH + ')');
-    basePaths.forEach(function (p) {
-      var c = p.cloneNode(true);
-      c.setAttribute('fill', '#C2FC50');
-      g.appendChild(c);
-    });
-    over.appendChild(g);
-    return g;
+  var grp = document.createElementNS(NS, 'g');
+  grp.setAttribute('clip-path', 'url(#_blob)');
+  basePaths.forEach(function (p) {
+    var c = p.cloneNode(true);
+    c.setAttribute('fill', '#C2FC50');
+    grp.appendChild(c);
   });
 
-  over.prepend(defs);
+  over.appendChild(defs);
+  over.appendChild(grp);
 
   var wrap = document.createElement('div');
   wrap.style.cssText = 'position:relative;display:inline-block;overflow:hidden;';
@@ -3083,94 +3067,75 @@ document.addEventListener('DOMContentLoaded', function() {
   wrap.appendChild(svg);
   wrap.appendChild(over);
 
-  function snapTo(i, y) {
-    yPos[i] = y;
-    groups[i].setAttribute('transform', 'translate(0,' + y + ')');
+  /* ── Clip state ── */
+  var curL = 0, curR = 0;
+
+  function applyClip(l, r) {
+    curL = l; curR = r;
+    var x = Math.max(0, l);
+    var w = Math.max(0, r - l);
+    clipRect.setAttribute('x', x);
+    clipRect.setAttribute('width', w);
   }
 
-  function animateAll(onDone) {
-    var fromY = yPos.slice();
-    var toY   = yTarget.slice();
-    var fromA = aPos.slice();
-    var toA   = aTarget.slice();
+  function moveTo(state, ms, onDone) {
+    var fromL = curL, fromR = curR;
+    var toL   = state[0], toR = state[1];
     var t0    = null;
 
     requestAnimationFrame(function tick(ts) {
       if (!t0) t0 = ts;
-      var t = Math.min((ts - t0) / SLIDE_MS, 1);
+      var t  = Math.min((ts - t0) / ms, 1);
 
-      for (var i = 0; i < 4; i++) {
-        /* position */
-        var fy = fromY[i], ty = toY[i];
-        if (fy !== ty) {
-          var easeY = fy > 0 ? easeOut(t) : easeIn(t);
-          var y = fy + (ty - fy) * easeY;
-          yPos[i] = y;
-          groups[i].setAttribute('transform', 'translate(0,' + y + ')');
-        }
-        /* opacity */
-        var fa = fromA[i], ta = toA[i];
-        if (fa !== ta) {
-          var a = fa + (ta - fa) * t;   /* linear fade */
-          aPos[i] = a;
-          groups[i].style.opacity = String(a);
-        }
-      }
+      /* Right edge: leads with ease-out (expands / arrives first) */
+      var newR = toR !== fromR
+        ? fromR + (toR - fromR) * easeOut(t)
+        : fromR;
+
+      /* Left edge: trails with ease-in (releases / follows last) */
+      var newL = toL !== fromL
+        ? fromL + (toL - fromL) * easeIn(t)
+        : fromL;
+
+      applyClip(newL, newR);
 
       if (t < 1) {
         requestAnimationFrame(tick);
       } else {
-        for (var j = 0; j < 4; j++) {
-          yPos[j] = toY[j];
-          aPos[j] = toA[j];
-          /* reset faded-out segments back below viewport */
-          if (toA[j] === 0) {
-            snapTo(j, VH);
-            groups[j].style.opacity = '1';
-            aPos[j] = aTarget[j] = 1;
-          }
-        }
+        applyClip(toL, toR);
         if (onDone) onDone();
       }
     });
   }
 
-  var step = 0;
+  /* ── Sequence ── */
+  var seq = [
+    { state: 1, hold: HOLD_MS  },  /* Arco   */
+    { state: 2, hold: HOLD_MS  },  /* ver    */
+    { state: 3, hold: HOLD_MS  },  /* verde  */
+    { state: 4, hold: HOLD_MS  },  /* design */
+    { state: 5, hold: PAUSE_MS },  /* exit   */
+  ];
+  var idx = 0;
 
-  function runStep() {
-    var prev     = step > 0 ? SEQUENCE[step - 1] : [0, 0, 0, 0];
-    var next     = SEQUENCE[step];
-    var fadeIdx  = FADE_EXIT[step]; /* segment that fades instead of sliding this step */
-
-    for (var i = 0; i < 4; i++) {
-      if (next[i] && prev[i]) {
-        yTarget[i] = 0;              /* stays visible, no movement */
-      } else if (next[i]) {
-        snapTo(i, VH);
-        groups[i].style.opacity = '1';
-        aPos[i] = aTarget[i] = 1;
-        yTarget[i] = 0;             /* slides in from below */
-      } else if (prev[i] && i === fadeIdx) {
-        yTarget[i] = 0;             /* stays in place… */
-        aTarget[i] = 0;             /* …but fades out  */
-      } else if (prev[i]) {
-        yTarget[i] = -VH;           /* slides out upward */
-      } else {
-        snapTo(i, VH);
-        yTarget[i] = VH;            /* stays hidden */
-      }
-    }
-
-    var isLast   = step === SEQUENCE.length - 1;
-    var nextStep = (step + 1) % SEQUENCE.length;
-
-    animateAll(function () {
-      step = nextStep;
-      setTimeout(runStep, HOLD_MS + (isLast ? PAUSE_MS : 0));
+  function run() {
+    var s = seq[idx];
+    moveTo(STATES[s.state], MOVE_MS, function () {
+      setTimeout(function () {
+        if (s.state === 5) {
+          /* reset invisibly, then restart */
+          applyClip(0, 0);
+          idx = 0;
+          setTimeout(run, 80);
+        } else {
+          idx++;
+          run();
+        }
+      }, s.hold);
     });
   }
 
-  setTimeout(runStep, 800);
+  setTimeout(run, 800);
 })();
 </script>
 
