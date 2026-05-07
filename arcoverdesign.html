@@ -846,31 +846,72 @@
     .test-role { font-size: 13px; color: var(--muted); margin-top: 2px; }
 
     /* ── FAQ ────────────────────────────────────── */
-    .faq-list { margin-top: 48px; }
-    .faq-item { border-bottom: 1px solid var(--border); }
-    .faq-item:first-child { border-top: 1px solid var(--border); }
+    .faq-section {
+      position: relative;
+      padding: 120px 0;
+      overflow: hidden;
+    }
+    .faq-bg {
+      position: absolute; inset: 0;
+      background-image: url('assets/aurora-card2.png');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.35) saturate(1.2);
+      z-index: 0;
+    }
+    .faq-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(10,20,15,0.6) 0%, rgba(10,20,15,0.3) 50%, rgba(10,20,15,0.7) 100%);
+    }
+    .faq-inner {
+      position: relative; z-index: 1;
+      max-width: 680px; margin: 0 auto;
+      padding: 0 var(--px);
+      text-align: center;
+    }
+    .faq-inner .eyebrow { color: var(--accent); margin-bottom: 12px; }
+    .faq-inner .section-h { margin-bottom: 8px; }
+    .faq-subtitle { font-size: 16px; color: var(--muted); margin-bottom: 48px; }
+
+    .faq-list { margin-top: 0; text-align: left; }
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+    }
+    .faq-item:first-child { border-top: none; }
     .faq-q {
       width: 100%; background: none; border: none;
       color: var(--white); font-family: var(--font-body);
-      font-size: 18px; font-weight: 500; text-align: left;
-      padding: 26px 0; cursor: pointer;
+      font-size: 17px; font-weight: 500; text-align: left;
+      padding: 20px 24px; cursor: pointer;
       display: flex; justify-content: space-between; align-items: center; gap: 24px;
       transition: color .15s;
     }
     .faq-q:hover { color: var(--accent); }
     .faq-icon {
-      width: 26px; height: 26px; border-radius: 50%;
-      border: 1.5px solid var(--surface); flex-shrink: 0;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(194,252,80,0.12);
+      border: 1.5px solid rgba(194,252,80,0.3); flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
-      transition: transform .25s, border-color .2s;
+      transition: transform .25s, border-color .2s, background .2s;
     }
-    .faq-item.open .faq-icon { transform: rotate(45deg); border-color: var(--accent); }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      border-color: var(--accent);
+      background: rgba(194,252,80,0.2);
+    }
     .faq-a {
-      font-size: 16px; line-height: 1.75; color: var(--muted); font-family: var(--font-body);
+      font-size: 15px; line-height: 1.75; color: var(--muted); font-family: var(--font-body);
       max-height: 0; overflow: hidden;
       transition: max-height .35s ease, padding-bottom .3s;
+      padding: 0 24px;
     }
-    .faq-item.open .faq-a { max-height: 400px; padding-bottom: 26px; }
+    .faq-item.open .faq-a { max-height: 400px; padding-bottom: 20px; }
 
     /* ── LABEL ───────────────────────────────── */
     .label {
@@ -2597,10 +2638,12 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- ════════════ ABOUT removed ════════════ -->
 
 <!-- ════════════ FAQ ════════════ -->
-<section class="sec sec-top" style="padding-bottom: 120px; padding: 120px 0px">
-  <div class="wrap">
+<section class="faq-section">
+  <div class="faq-bg"></div>
+  <div class="faq-inner">
     <p class="eyebrow">FAQ</p>
-    <h2 class="section-h">Perguntas frequentes</h2>
+    <h2 class="section-h">Tem dúvidas?</h2>
+    <p class="faq-subtitle">Aqui estão as respostas que você procura.</p>
     <div class="faq-list">
 
       <div class="faq-item">
