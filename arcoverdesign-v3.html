@@ -478,7 +478,7 @@
       /* Fix note text cut on mobile */
       .hero-note { white-space: normal !important; text-align: center; }
       /* CTA section padding */
-      .hero-box { padding: 80px 0 60px !important; }
+      .hero-box { padding: 80px 20px 60px !important; }
 
       /* Testimonials — single column */
       .test-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
@@ -960,6 +960,12 @@
     .pricing-alt { background: var(--surface); border: 1px solid var(--border); border-radius: 28px; padding: 40px; display: flex; flex-direction: column; gap: 20px; position: relative; overflow: hidden; }
     .pricing-alt::before { display: none; }
     .pricing-alt > * { position: relative; z-index: 1; }
+    .pricing-alt .aurora-reveal { position: absolute !important; z-index: 0 !important; opacity: 0.45; border-radius: 24px; transition: opacity 0.6s ease; }
+    .pricing-alt:hover .aurora-reveal { opacity: 0.65; }
+    .pricing-alt:hover .aurora-reveal::before {
+      transform: scale(1.12) translate(3%, -3%);
+      filter: brightness(1.1) saturate(1.15);
+    }
     .alt-icon { width: 48px; height: 48px; background: rgba(194,252,80,.08); border-radius: 12px; display: flex; align-items: center; justify-content: center; }
     .alt-title { font-family: var(--font-title); font-size: 28px; font-weight: 500; letter-spacing: -.02em; color: var(--white); }
     .alt-desc { font-size: 15px; color: var(--muted); line-height: 1.7; font-family: var(--font-body); }
@@ -1098,12 +1104,14 @@
     @media (max-width: 768px) {
       .btn-hero {
         width: 100% !important;
+        max-width: 100% !important;
         justify-content: center !important;
         font-size: 15px !important;
         padding: 14px 20px !important;
       }
       .btn-white-outline { justify-content: center !important; }
       .hero-cta > div { width: 100%; }
+      .btn-lime-block { width: 80% !important; max-width: 360px !important; margin-left: auto !important; margin-right: auto !important; }
 
       /* Alt pricing card: use surface bg */
       .pricing-alt { background: var(--surface) !important; }
@@ -2553,7 +2561,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <!-- ════════════ TOOLS ════════════ -->
-<div class="bg-alt" style="padding: 80px 0;">
+<div class="bg-alt" style="padding: 80px 0; display:none;">
   <div class="wrap">
     <div class="section-hdr r on">
       <span class="label">Stack de trabalho</span>
@@ -2666,7 +2674,8 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="pricing-annual"><strong>Opção anual:</strong> pague anualmente e economize 10%. Aplicado automaticamente no pagamento.</div>
         <p class="pricing-footnote">Designer sênior CLT custa R$10–18k/mês. A Arcoverdesign entrega o mesmo resultado — sem encargos, sem risco.</p>
       </div>
-      <div class="pricing-alt rr on" style="border-radius: 24px; background-color: rgb(14, 18, 20);">
+      <div class="pricing-alt rr on" style="border-radius: 24px; background-color: rgb(14, 18, 20); border: 1px solid rgba(194, 252, 80, 0.5);">
+        <div class="aurora-reveal" style="--aurora-photo: url('assets/aurora-card3.png');" aria-hidden="true"></div>
         <div class="alt-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="#C2FC50"></path></svg>
         </div>
