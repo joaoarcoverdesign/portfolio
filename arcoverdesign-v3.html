@@ -640,6 +640,7 @@
       overflow: hidden;
       display: grid; grid-template-columns: 1fr 1fr;
       min-height: 640px;
+      position: relative;
     }
     .feature-content {
       padding: 72px 64px;
@@ -2365,14 +2366,15 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- ════════════ WHAT IS ARCOVERDESIGN ════════════ -->
 <section class="sec sec-top" id="why-us">
   <div class="wrap">
-    <div class="feature-box">
-      <div class="feature-content">
+    <div class="feature-box" data-dot-grid="" style="position:relative;overflow:hidden;">
+      <canvas class="dot-grid-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+      <div class="feature-content" style="position:relative;z-index:1;">
         <p class="eyebrow" style="margin-bottom:4px;">O que é Arcoverdesign</p>
         <h2 class="feature-title">Uma assinatura. <span style="color:var(--accent)">Design sob demanda</span> no seu ritmo.</h2>
         <p class="feature-desc">Uma mensalidade fixa. Um designer de produto dedicado, integrado ao seu fluxo de trabalho. Entrega até em 72h.</p>
         <p class="feature-desc" style="margin-top: -8px;">Sem propostas. Sem timesheet. Sem susto no fechamento do mês.</p>
       </div>
-      <div class="feature-visual">
+      <div class="feature-visual" style="position:relative;z-index:1;">
         <div class="mock-wrap">
           <div class="mock-cols">
             <div class="mock-col shift">
