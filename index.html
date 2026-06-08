@@ -10,25 +10,19 @@
   </script>
 
   <meta charset="UTF-8">
+  <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Arcoverdesign — UX/UI Design by Subscription</title>
+  <title data-i18n="page_title">Arcoverdesign — UX/UI Design by Subscription</title>
   <link rel="alternate" hreflang="en" href="https://arcoverdesign.com/" />
   <link rel="alternate" hreflang="pt" href="https://arcoverdesign.com/pt/" />
   <link rel="alternate" hreflang="es" href="https://arcoverdesign.com/es/" />
   <link rel="alternate" hreflang="x-default" href="https://arcoverdesign.com/" />
   <script>
     (function() {
-      var saved = localStorage.getItem('arcover-locale');
-      if (saved) {
-        var path = window.location.pathname;
-        if (saved === 'pt' && !path.startsWith('/pt')) { window.location.replace('/pt/'); return; }
-        if (saved === 'es' && !path.startsWith('/es')) { window.location.replace('/es/'); return; }
-        return;
-      }
-      var lang = (navigator.language || navigator.userLanguage || 'en').slice(0, 2).toLowerCase();
-      if (lang === 'pt') { localStorage.setItem('arcover-locale', 'pt'); window.location.replace('/pt/'); }
-      else if (lang === 'es') { localStorage.setItem('arcover-locale', 'es'); window.location.replace('/es/'); }
-      else { localStorage.setItem('arcover-locale', 'en'); }
+      var p = window.location.pathname;
+      var lang = p.startsWith('/pt') ? 'pt' : p.startsWith('/es') ? 'es' : 'en';
+      document.documentElement.lang = lang;
+      window.__lang = lang;
     })();
   </script>
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
@@ -2274,10 +2268,10 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
       </a>
       <ul class="nav-links">
-        <li><a href="#how-it-works">How it works</a></li>
-        <li><a href="#pricing-full">Pricing</a></li>
-        <li><a href="#why">Why us</a></li>
-        <li><a href="#pricing">About</a></li>
+        <li><a href="#how-it-works" data-i18n="nav_how_it_works">How it works</a></li>
+        <li><a href="#pricing-full" data-i18n="nav_pricing">Pricing</a></li>
+        <li><a href="#why" data-i18n="nav_why">Why us</a></li>
+        <li><a href="#pricing" data-i18n="nav_about">About</a></li>
       </ul>
     </div>
     <div style="display:flex;align-items:center;gap:12px;">
@@ -2288,7 +2282,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <span class="lang-sep">|</span>
         <a href="/es/" onclick="switchLang(event,'es','/es/')">ES</a>
       </div>
-      <a href="#" onclick="openCalendly(event)" class="btn btn-primary">Book a call</a>
+      <a href="#" onclick="openCalendly(event)" class="btn btn-primary" data-i18n="nav_cta">Book a call</a>
     </div>
     <!-- Hamburger (mobile only) -->
     <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
@@ -2300,13 +2294,13 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- Mobile drawer — outside <nav> to avoid stacking context trap -->
 <div class="nav-drawer" id="navDrawer">
   <ul>
-    <li><a href="#how-it-works" class="drawer-link">How it works</a></li>
-    <li><a href="#pricing-full" class="drawer-link">Pricing</a></li>
-    <li><a href="#why" class="drawer-link">Why us</a></li>
-    <li><a href="#pricing" class="drawer-link">About</a></li>
+    <li><a href="#how-it-works" class="drawer-link" data-i18n="nav_how_it_works">How it works</a></li>
+    <li><a href="#pricing-full" class="drawer-link" data-i18n="nav_pricing">Pricing</a></li>
+    <li><a href="#why" class="drawer-link" data-i18n="nav_why">Why us</a></li>
+    <li><a href="#pricing" class="drawer-link" data-i18n="nav_about">About</a></li>
   </ul>
   <div class="drawer-cta">
-    <a href="#" onclick="openCalendly(event)" class="btn btn-primary">Book a call</a>
+    <a href="#" onclick="openCalendly(event)" class="btn btn-primary" data-i18n="nav_cta">Book a call</a>
   </div>
 </div>
 
@@ -2336,7 +2330,7 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="hero-box" id="hero-box" style="max-width:none;">
       <canvas id="hero-dot-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;" width="1345" height="460"></canvas>
       <div style="position:relative;z-index:1;">
-        <p class="eyebrow" style="margin-bottom: 24px;">Senior Product Designer · UI/UX · SaaS · Fintech · Edtech</p>
+        <p class="eyebrow" style="margin-bottom: 24px;" data-i18n="hero_eyebrow">Senior Product Designer · UI/UX · SaaS · Fintech · Edtech</p>
         <h1 class="hero-title" id="hero-title" style="display:flex;justify-content:center;align-items:center;margin-bottom:8px;">
           <svg style="width:min(576px,84vw);height:auto;" viewBox="0 0 960 152" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Arcoverdesign">
             <path d="M92.7471 112.384H74.1982V84.6465C62.2223 97.1667 44.5102 101.706 23.1709 102.241L21.2393 102.266H18.5498V112.384H0V75.2852C3.92159e-07 34.9467 32.1904 2.1266 72.2842 1.11133L74.1982 1.08691H92.7471V112.384ZM74.1982 19.6367C43.4644 19.6367 18.5498 44.5514 18.5498 75.2852V83.7158H21.2393C49.7988 83.7158 71.0192 62.5875 74.1982 35.2432V19.6367Z" fill="white"/>
@@ -2347,10 +2341,10 @@ document.addEventListener('DOMContentLoaded', function() {
             <path d="M697.95 58.7393C697.95 43.1554 710.088 35.813 731.965 35.813C743.054 35.813 751.894 37.0117 759.986 40.0086V56.1919C754.592 54.2439 743.503 50.7975 730.467 50.7975C720.577 50.7975 715.932 53.195 715.932 57.5405C715.932 70.577 763.133 63.0848 763.133 90.0569C763.133 105.641 750.995 114.032 729.118 114.032C718.029 114.032 709.189 112.833 700.947 109.836V93.6532C706.342 95.6011 717.43 99.0476 730.467 99.0476C740.506 99.0476 745.002 95.6011 745.002 91.2556C745.002 78.369 697.95 85.7114 697.95 58.7393ZM769.116 15.7337C769.116 9.88977 773.312 5.9938 779.605 5.9938C785.899 5.9938 790.094 9.88977 790.094 15.7337C790.094 21.5777 785.899 25.4737 779.605 25.4737C773.312 25.4737 769.116 21.5777 769.116 15.7337ZM770.615 112.384V37.4613H788.596V112.384H770.615ZM855.114 28.9201C855.114 22.7764 859.61 18.7306 866.353 18.7306C873.096 18.7306 877.591 22.7764 877.591 28.9201C877.591 35.0637 873.096 39.1096 866.353 39.1096C859.61 39.1096 855.114 35.0637 855.114 28.9201ZM796.375 70.4272C796.375 49.7486 811.21 35.9628 833.537 35.9628C855.714 35.9628 870.698 49.7486 870.698 69.5281C870.698 88.4086 858.86 96.5002 851.518 96.5002V97.9987C859.909 97.9987 871.447 103.393 871.447 119.277C871.447 139.206 857.062 151.344 834.286 151.344C810.91 151.344 797.124 138.157 797.124 116.13H815.106C814.956 127.968 821.849 134.411 834.286 134.411C846.573 134.411 853.466 128.567 853.466 118.078C853.466 106.39 842.228 104.892 833.537 104.892C811.21 104.892 796.375 91.1058 796.375 70.4272ZM814.207 70.4272C814.207 81.0662 821.849 88.1089 833.537 88.1089C846.723 88.1089 852.717 82.7145 852.717 70.4272C852.717 59.6383 845.224 52.7455 833.537 52.7455C821.699 52.7455 814.207 59.6383 814.207 70.4272ZM895.759 72.525V112.384H877.777V73.7238C877.777 51.0972 892.762 35.9628 916.287 35.9628C938.914 35.9628 954.048 51.0972 954.048 73.7238V112.384H935.917V72.525C935.917 60.6872 927.825 52.7455 915.688 52.7455C903.85 52.7455 895.759 60.8371 895.759 72.525Z" fill="white"/>
           </svg>
         </h1>
-        <p class="hero-sub" style="font-size:17px;margin-bottom:20px;">Design by subscription.</p>
+        <p class="hero-sub" style="font-size:17px;margin-bottom:20px;" data-i18n="hero_sub">Design by subscription.</p>
         <div class="hero-cta">
-          <a href="https://wa.me/5561993734553?text=Hi%20João%2C%20I%20want%20a%20spot%20at%20Arcoverdesign." target="_blank" rel="noopener" class="btn btn-hero"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> I'm interested</a>
-          <span class="hero-note">Limited spots · Chat on WhatsApp · PT / EN / ES</span>
+          <a href="https://wa.me/5561993734553?text=Hi%20João%2C%20I%20want%20a%20spot%20at%20Arcoverdesign." target="_blank" rel="noopener" class="btn btn-hero" data-wa-cta><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span data-i18n="hero_cta_btn"> I'm interested</span></a>
+          <span class="hero-note" data-i18n="hero_note">Limited spots · Chat on WhatsApp · PT / EN / ES</span>
         </div>
       </div>
     </div>
@@ -2359,17 +2353,17 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- ════════════ HOW IT WORKS — 3 CARDS ════════════ -->
 <section class="sec sec-top" id="how-it-works">
   <div class="wrap">
-    <h2 class="section-h how-title">Most startups don't need a full design team. They need a <span style="color:var(--accent)">senior designer</span> who actually delivers.</h2>
+    <h2 class="section-h how-title" data-i18n-html="how_heading">Most startups don't need a full design team. They need a <span style="color:var(--accent)">senior designer</span> who actually delivers.</h2>
     <div class="cards-grid">
 
       <!-- Card 1 — Assinar -->
       <div class="card card-dots">
         <div class="card-img card-img--leaves">
           <div class="aurora-reveal" style="--aurora-photo: url('assets/aurora-pastel.png')" aria-hidden="true"></div>
-          <img src="assets/mask-group.png" alt="Subscription panel" class="mockup-float">
+          <img src="assets/mask-group.png" alt="Subscription panel" class="mockup-float" data-card1-img>
         </div>
-        <h3 class="card-title">Subscribe</h3>
-        <p class="card-body">Subscribe to a plan and request as many designs as you want. One request at a time.</p>
+        <h3 class="card-title" data-i18n="card1_title">Subscribe</h3>
+        <p class="card-body" data-i18n="card1_body">Subscribe to a plan and request as many designs as you want. One request at a time.</p>
       </div>
 
       <!-- Card 2 — Solicitar -->
@@ -2378,29 +2372,29 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="aurora-reveal" style="--aurora-photo: url('assets/aurora-card2.png')" aria-hidden="true"></div>
           <div class="card-img-tags">
             <span class="tag">UI-UX</span>
-            <span class="tag">Product design</span>
-            <span class="tag">Web design</span>
-            <span class="tag">Landing pages</span>
-            <span class="tag">Presentations</span>
-            <span class="tag">Social media</span>
-            <span class="tag">Ad creatives</span>
-            <span class="tag">Graphic design</span>
-            <span class="tag">Mobile apps</span>
-            <span class="tag">Email marketing</span>
+            <span class="tag" data-i18n="tag_product_design">Product design</span>
+            <span class="tag" data-i18n="tag_web_design">Web design</span>
+            <span class="tag" data-i18n="tag_landing_pages">Landing pages</span>
+            <span class="tag" data-i18n="tag_presentations">Presentations</span>
+            <span class="tag" data-i18n="tag_social_media">Social media</span>
+            <span class="tag" data-i18n="tag_ad_creatives">Ad creatives</span>
+            <span class="tag" data-i18n="tag_graphic_design">Graphic design</span>
+            <span class="tag" data-i18n="tag_mobile_apps">Mobile apps</span>
+            <span class="tag" data-i18n="tag_email_marketing">Email marketing</span>
           </div>
         </div>
-        <h3 class="card-title">Request</h3>
-        <p class="card-body">Request anything, from mobile apps to logos.</p>
+        <h3 class="card-title" data-i18n="card2_title">Request</h3>
+        <p class="card-body" data-i18n="card2_body">Request anything, from mobile apps to logos.</p>
       </div>
 
       <!-- Card 3 — Receber -->
       <div class="card card-glow">
         <div class="card-img" style="background:#252b30;">
           <div class="aurora-reveal" style="--aurora-photo: url('assets/aurora-card3.png')" aria-hidden="true"></div>
-          <img id="card3-img" src="assets/mockup2.png" alt="Delivery mockup" style="object-fit:contain;padding:16px;">
+          <img id="card3-img" src="assets/mockup2.png" alt="Delivery mockup" style="object-fit:contain;padding:16px;" data-card3-img>
         </div>
-        <h3 class="card-title">Receive</h3>
-        <p class="card-body">Receive your design on average within two business days.</p>
+        <h3 class="card-title" data-i18n="card3_title">Receive</h3>
+        <p class="card-body" data-i18n="card3_body">Receive your design on average within two business days.</p>
       </div>
 
     </div>
@@ -2413,10 +2407,10 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="feature-box" data-dot-grid="" style="position:relative;overflow:hidden;">
       <canvas class="dot-grid-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
       <div class="feature-content" style="position:relative;z-index:1;">
-        <p class="eyebrow" style="margin-bottom:4px;">What is Arcoverdesign</p>
-        <h2 class="feature-title">One subscription. <span style="color:var(--accent)">On-demand design</span> at your pace.</h2>
-        <p class="feature-desc">A fixed monthly fee. A product designer dedicated to your project, every day, integrated into your workflow.</p>
-        <p class="feature-desc" style="margin-top: -8px;">No proposals. No timesheets. No surprises at the end of the month.</p>
+        <p class="eyebrow" style="margin-bottom:4px;" data-i18n="feature_eyebrow">What is Arcoverdesign</p>
+        <h2 class="feature-title" data-i18n-html="feature_title">One subscription. <span style="color:var(--accent)">On-demand design</span> at your pace.</h2>
+        <p class="feature-desc" data-i18n="feature_desc1">A fixed monthly fee. A product designer dedicated to your project, every day, integrated into your workflow.</p>
+        <p class="feature-desc" style="margin-top: -8px;" data-i18n="feature_desc2">No proposals. No timesheets. No surprises at the end of the month.</p>
       </div>
       <div class="feature-visual" style="position:relative;z-index:1;">
         <div class="mock-wrap">
@@ -2458,7 +2452,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <path d="M6 0C8.4 0 10.4 1.5 11.2 3.6H36V7.2H11.2C10.8 8.3 10.1 9.2 9.1 9.8C8.1 10.5 7.1 10.8 6 10.8C4.4 10.8 2.9 10.2 1.8 9.1C0.6 8 0 6.5 0 5.4C0 4 0.6 2.7 1.6 1.7C2.7 0.6 4.2 0 6 0Z" fill="#C2FC50"></path>
           </svg>
         </div>
-        <span class="stat-label">30-min onboarding</span>
+        <span class="stat-label" data-i18n="stat1">30-min onboarding</span>
       </div>
 
       <div class="stat">
@@ -2468,7 +2462,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <path d="M18 10V18.5L23.5 24" stroke="#C2FC50" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
           </svg>
         </div>
-        <span class="stat-label">Daily progress</span>
+        <span class="stat-label" data-i18n="stat2">Daily progress</span>
       </div>
 
       <div class="stat">
@@ -2479,7 +2473,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <path d="M4 27 H34" stroke="#C2FC50" stroke-width="2.2" stroke-linecap="round"></path>
           </svg>
         </div>
-        <span class="stat-label">Fixed monthly price</span>
+        <span class="stat-label" data-i18n="stat3">Fixed monthly price</span>
       </div>
 
     </div>
@@ -2491,18 +2485,18 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="wrap">
     <div class="services-box">
       <div>
-        <p class="eyebrow">About</p>
-        <h2 class="section-h">Everything your product needs, in one subscription</h2>
+        <p class="eyebrow" data-i18n="services_eyebrow">About</p>
+        <h2 class="section-h" data-i18n="services_heading">Everything your product needs, in one subscription</h2>
       </div>
       <ul class="services-list">
-        <li>App screens, dashboards, and flows</li>
-        <li>Onboarding and activation flows</li>
-        <li>Landing pages and pricing pages</li>
-        <li>Design systems and component libraries in Figma</li>
-        <li>UX research session (1 per month)</li>
-        <li>Prototypes and interactive flows</li>
-        <li>Dev handoff with annotated specs in Figma</li>
-        <li>Loom walkthrough video with every delivery</li>
+        <li data-i18n="service1">App screens, dashboards, and flows</li>
+        <li data-i18n="service2">Onboarding and activation flows</li>
+        <li data-i18n="service3">Landing pages and pricing pages</li>
+        <li data-i18n="service4">Design systems and component libraries in Figma</li>
+        <li data-i18n="service5">UX research session (1 per month)</li>
+        <li data-i18n="service6">Prototypes and interactive flows</li>
+        <li data-i18n="service7">Dev handoff with annotated specs in Figma</li>
+        <li data-i18n="service8">Loom walkthrough video with every delivery</li>
       </ul>
     </div>
   </div>
@@ -2511,30 +2505,30 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- ════════════ MARQUEE ════════════ -->
 <div class="marquee-wrap" style="margin:0 0 80px;">
   <div class="marquee-track">
-    <span class="mq-word dim">Quality</span>
+    <span class="mq-word dim" data-i18n="marquee_word1">Quality</span>
     <span class="mq-icon"><!-- star --><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></span>
-    <span class="mq-word hi">Efficiency</span>
+    <span class="mq-word hi" data-i18n="marquee_word2">Efficiency</span>
     <span class="mq-icon"><!-- target --><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></span>
-    <span class="mq-word outline">Agility</span>
+    <span class="mq-word outline" data-i18n="marquee_word3">Agility</span>
     <span class="mq-icon"><!-- speedometer --><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"></path><path d="M12 6v2"></path><path d="M6.34 8.34l1.42 1.42"></path><path d="M4 15h2"></path><path d="M17.66 9.76l-1.42 1.42"></path><path d="M18 15h2"></path><path d="M12 15l3.5-3.5"></path></svg></span>
-    <span class="mq-word dim">Quality</span>
+    <span class="mq-word dim" data-i18n="marquee_word1">Quality</span>
     <span class="mq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></span>
-    <span class="mq-word hi">Efficiency</span>
+    <span class="mq-word hi" data-i18n="marquee_word2">Efficiency</span>
     <span class="mq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></span>
-    <span class="mq-word outline">Agility</span>
+    <span class="mq-word outline" data-i18n="marquee_word3">Agility</span>
     <span class="mq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"></path><path d="M12 6v2"></path><path d="M6.34 8.34l1.42 1.42"></path><path d="M4 15h2"></path><path d="M17.66 9.76l-1.42 1.42"></path><path d="M18 15h2"></path><path d="M12 15l3.5-3.5"></path></svg></span>
     <!-- duplicate for seamless loop -->
-    <span class="mq-word dim">Quality</span>
+    <span class="mq-word dim" data-i18n="marquee_word1">Quality</span>
     <span class="mq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></span>
-    <span class="mq-word hi">Efficiency</span>
+    <span class="mq-word hi" data-i18n="marquee_word2">Efficiency</span>
     <span class="mq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></span>
-    <span class="mq-word outline">Agility</span>
+    <span class="mq-word outline" data-i18n="marquee_word3">Agility</span>
     <span class="mq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"></path><path d="M12 6v2"></path><path d="M6.34 8.34l1.42 1.42"></path><path d="M4 15h2"></path><path d="M17.66 9.76l-1.42 1.42"></path><path d="M18 15h2"></path><path d="M12 15l3.5-3.5"></path></svg></span>
-    <span class="mq-word dim">Quality</span>
+    <span class="mq-word dim" data-i18n="marquee_word1">Quality</span>
     <span class="mq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg></span>
-    <span class="mq-word hi">Efficiency</span>
+    <span class="mq-word hi" data-i18n="marquee_word2">Efficiency</span>
     <span class="mq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></span>
-    <span class="mq-word outline">Agility</span>
+    <span class="mq-word outline" data-i18n="marquee_word3">Agility</span>
     <span class="mq-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"></path><path d="M12 6v2"></path><path d="M6.34 8.34l1.42 1.42"></path><path d="M4 15h2"></path><path d="M17.66 9.76l-1.42 1.42"></path><path d="M18 15h2"></path><path d="M12 15l3.5-3.5"></path></svg></span>
   </div>
 </div>
@@ -2542,24 +2536,24 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- ════════════ COMO FUNCIONA ════════════ -->
 <section class="sec sec-top" id="about">
   <div class="wrap">
-    <p class="eyebrow">How it works</p>
-    <h2 class="section-h" style="margin-bottom: 40px;">Design that moves forward every day.</h2>
+    <p class="eyebrow" data-i18n="process_eyebrow">How it works</p>
+    <h2 class="section-h" style="margin-bottom: 40px;" data-i18n="process_heading">Design that moves forward every day.</h2>
     <div class="process-list">
       <div class="process-item">
-        <h3 class="p-step">Subscribe online</h3>
-        <p class="p-desc">Pay online. Pricing is public, no sales call required.</p>
+        <h3 class="p-step" data-i18n="step1_title">Subscribe online</h3>
+        <p class="p-desc" data-i18n="step1_desc">Pay online. Pricing is public, no sales call required.</p>
       </div>
       <div class="process-item">
-        <h3 class="p-step">Onboarding call*</h3>
-        <p class="p-desc">A 30-minute call. We review your brand, set up Figma, and build the design backlog in Trello. You start delivering on day one.</p>
+        <h3 class="p-step" data-i18n="step2_title">Onboarding call*</h3>
+        <p class="p-desc" data-i18n="step2_desc">A 30-minute call. We review your brand, set up Figma, and build the design backlog in Trello. You start delivering on day one.</p>
       </div>
       <div class="process-item">
-        <h3 class="p-step">Send requests, receive deliveries*</h3>
-        <p class="p-desc">Request via a simple brief. Your CS confirms the estimated deadline before starting. Your designer delivers in Figma, with a Loom video explaining each decision.</p>
+        <h3 class="p-step" data-i18n="step3_title">Send requests, receive deliveries*</h3>
+        <p class="p-desc" data-i18n="step3_desc">Request via a simple brief. Your CS confirms the estimated deadline before starting. Your designer delivers in Figma, with a Loom video explaining each decision.</p>
       </div>
       <div class="process-item">
-        <h3 class="p-step">Review and repeat if needed</h3>
-        <p class="p-desc">Unlimited revisions until you approve. Your designer learns the product in depth and gets faster with every sprint.</p>
+        <h3 class="p-step" data-i18n="step4_title">Review and repeat if needed</h3>
+        <p class="p-desc" data-i18n="step4_desc">Unlimited revisions until you approve. Your designer learns the product in depth and gets faster with every sprint.</p>
       </div>
     </div>
   </div>
@@ -2568,11 +2562,11 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- ════════════ TESTIMONIALS ════════════ -->
 <section class="sec sec-top" style="padding: 80px 0px">
   <div class="wrap">
-    <p class="eyebrow">Clients</p>
-    <h2 class="section-h" style="margin-bottom: 0;">What they say about us</h2>
+    <p class="eyebrow" data-i18n="testi_eyebrow">Clients</p>
+    <h2 class="section-h" style="margin-bottom: 0;" data-i18n="testi_heading">What they say about us</h2>
     <div class="test-grid">
       <div class="test-card">
-        <p class="test-quote test-quote-body">"We went from Canva screens to a real design system in 6 weeks. Investors noticed."</p>
+        <p class="test-quote test-quote-body" data-i18n="testi1_quote">"We went from Canva screens to a real design system in 6 weeks. Investors noticed."</p>
         <div class="test-author">
           <div class="test-avatar" style="background:#2d3a2e;overflow:hidden;">
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
@@ -2581,13 +2575,13 @@ document.addEventListener('DOMContentLoaded', function() {
             </svg>
           </div>
           <div>
-            <div class="test-name">Rafael S.</div>
-            <div class="test-role">CEO, SaaS Startup</div>
+            <div class="test-name" data-i18n="testi1_name">Rafael S.</div>
+            <div class="test-role" data-i18n="testi1_role">CEO, SaaS Startup</div>
           </div>
         </div>
       </div>
       <div class="test-card">
-        <p class="test-quote test-quote-body">"Loom walkthroughs cut our review cycles in half. I comment on Figma at night and already have the update in the morning."</p>
+        <p class="test-quote test-quote-body" data-i18n="testi2_quote">"Loom walkthroughs cut our review cycles in half. I comment on Figma at night and already have the update in the morning."</p>
         <div class="test-author">
           <div class="test-avatar" style="background:#2a3040;overflow:hidden;">
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
@@ -2596,8 +2590,8 @@ document.addEventListener('DOMContentLoaded', function() {
             </svg>
           </div>
           <div>
-            <div class="test-name">Marina C.</div>
-            <div class="test-role">CPO, Fintech</div>
+            <div class="test-name" data-i18n="testi2_name">Marina C.</div>
+            <div class="test-role" data-i18n="testi2_role">CPO, Fintech</div>
           </div>
         </div>
       </div>
@@ -2658,8 +2652,8 @@ document.addEventListener('DOMContentLoaded', function() {
 <section style="padding: 100px 0;" id="why">
   <div class="wrap">
     <div style="text-align:center; margin-bottom: 56px;">
-      <span class="label">Why Arcoverdesign</span>
-      <h2 class="sec-title" style="max-width: 820px; margin: 16px auto 0; font-size: clamp(26px, 2.8vw, 40px);">The only fixed-price <span style="white-space:nowrap">UX/UI</span> design subscription in Latin America.</h2>
+      <span class="label" data-i18n="why_label">Why Arcoverdesign</span>
+      <h2 class="sec-title" style="max-width: 820px; margin: 16px auto 0; font-size: clamp(26px, 2.8vw, 40px);" data-i18n-html="why_heading">The only fixed-price <span style="white-space:nowrap">UX/UI</span> design subscription in Latin America.</h2>
     </div>
 
     <!-- two-col layout: photo left, stat card right -->
@@ -2667,7 +2661,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       <!-- Photo -->
       <div class="about-photo" style="border-radius: var(--r-card); overflow:hidden; min-height: 420px; position:relative;">
-        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&amp;auto=format&amp;fit=crop&amp;q=80" alt="Designer working in collaboration" style="width:100%; height:100%; object-fit:cover; display:block;">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&amp;auto=format&amp;fit=crop&amp;q=80" alt="Designer working in collaboration" style="width:100%; height:100%; object-fit:cover; display:block;" data-why-photo>
       </div>
 
       <!-- Stat card -->
@@ -2677,11 +2671,11 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
         <div>
           <div style="font-family: var(--font-title); font-size: 88px; font-weight: 800; line-height: 1; color: rgb(48, 53, 57); letter-spacing: -0.03em">+40</div>
-          <p style="font-size: 15px; line-height: 1.6; color: rgb(48, 53, 57); margin-top: 16px; max-width: 280px; font-weight: 600; font-family: Urbanist">Products delivered to startups and scale-ups across Latin America, with a single plan, no surprises at end of month.</p>
+          <p style="font-size: 15px; line-height: 1.6; color: rgb(48, 53, 57); margin-top: 16px; max-width: 280px; font-weight: 600; font-family: Urbanist" data-i18n="why_stat_desc">Products delivered to startups and scale-ups across Latin America, with a single plan, no surprises at end of month.</p>
         </div>
         <div style="border-top: 1px solid rgba(0,0,0,0.15); padding-top: 28px;">
-          <div style="font-family: var(--font-title); font-size: 23px; font-weight: 700; color: rgb(48, 53, 57); line-height: 1.3; margin-bottom: 12px">Support that truly speaks your language.</div>
-          <p style="font-size: 14px; line-height: 1.7; color: rgb(48, 53, 57); margin: 0; font-weight: 600; font-family: Urbanist; letter-spacing: -0.1px">Every client has a dedicated Customer Success Executive, with native Portuguese and Spanish and fluent English. No intermediaries, no translation noise. A real person who knows your project and responds the same day, in the language you think in.</p>
+          <div style="font-family: var(--font-title); font-size: 23px; font-weight: 700; color: rgb(48, 53, 57); line-height: 1.3; margin-bottom: 12px" data-i18n="why_support_title">Support that truly speaks your language.</div>
+          <p style="font-size: 14px; line-height: 1.7; color: rgb(48, 53, 57); margin: 0; font-weight: 600; font-family: Urbanist; letter-spacing: -0.1px" data-i18n="why_support_desc">Every client has a dedicated Customer Success Executive, with native Portuguese and Spanish and fluent English. No intermediaries, no translation noise. A real person who knows your project and responds the same day, in the language you think in.</p>
         </div>
       </div>
 
@@ -2694,46 +2688,46 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="bg-alt" style="padding: 80px 0;" id="pricing-full">
   <div class="wrap">
     <div class="section-hdr r on">
-      <span class="label">Plans &amp; pricing</span>
-      <h2 class="sec-title">One plan. Everything included. <span class="accent-word">No extra charges.</span></h2>
+      <span class="label" data-i18n="pricing_label">Plans &amp; pricing</span>
+      <h2 class="sec-title" data-i18n-html="pricing_heading">One plan. Everything included. <span class="accent-word">No extra charges.</span></h2>
     </div>
     <div class="pricing-wrap">
       <div class="pricing-card rl on" data-dot-grid="" style="position:relative;overflow:hidden;">
         <canvas class="dot-grid-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;" width="704" height="774"></canvas>
-        <div class="pricing-badge">★ Featured plan</div>
-        <p class="pricing-name">Design Partner</p>
-        <div class="pricing-amount">$1,490<span>/mo</span></div>
-        <p class="pricing-note">Cancel anytime. No long-term contract.</p>
+        <div class="pricing-badge" data-i18n="pricing_badge">★ Featured plan</div>
+        <p class="pricing-name" data-i18n="pricing_name">Design Partner</p>
+        <div class="pricing-amount" data-i18n-html="pricing_amount_html">$1,490<span>/mo</span></div>
+        <p class="pricing-note" data-i18n="pricing_note">Cancel anytime. No long-term contract.</p>
         <ul class="pricing-features">
-          <li><span class="chk">✓</span> Unlimited requests in queue</li>
-          <li><span class="chk">✓</span> Unlimited revisions</li>
-          <li><span class="chk">✓</span> Dedicated senior designer, present every day on your project</li>
-          <li><span class="chk">✓</span> 1 UX review per month (flows, friction points, and opportunities)</li>
-          <li><span class="chk">✓</span> Deadline confirmed before each delivery starts</li>
-          <li><span class="chk">✓</span> 1 active design request at a time</li>
-          <li><span class="chk">✓</span> Figma + Trello + Slack + Loom</li>
-          <li><span class="chk">✓</span> PT / EN / ES</li>
-          <li><span class="chk">✓</span> Dedicated Customer Success Executive: native PT &amp; ES, fluent EN</li>
-          <li><span class="chk">✓</span> Pause or cancel anytime, penalty-free</li>
+          <li><span class="chk">✓</span><span data-i18n="pricing_feat1"> Unlimited requests in queue</span></li>
+          <li><span class="chk">✓</span><span data-i18n="pricing_feat2"> Unlimited revisions</span></li>
+          <li><span class="chk">✓</span><span data-i18n="pricing_feat3"> Dedicated senior designer, present every day on your project</span></li>
+          <li><span class="chk">✓</span><span data-i18n="pricing_feat4"> 1 UX review per month (flows, friction points, and opportunities)</span></li>
+          <li><span class="chk">✓</span><span data-i18n="pricing_feat5"> Deadline confirmed before each delivery starts</span></li>
+          <li><span class="chk">✓</span><span data-i18n="pricing_feat6"> 1 active design request at a time</span></li>
+          <li><span class="chk">✓</span><span data-i18n="pricing_feat7"> Figma + Trello + Slack + Loom</span></li>
+          <li><span class="chk">✓</span><span data-i18n="pricing_feat8"> PT / EN / ES</span></li>
+          <li><span class="chk">✓</span><span data-i18n="pricing_feat9"> Dedicated Customer Success Executive: native PT &amp; ES, fluent EN</span></li>
+          <li><span class="chk">✓</span><span data-i18n="pricing_feat10"> Pause or cancel anytime, penalty-free</span></li>
         </ul>
-        <a href="https://wa.me/5561993734553?text=Hi%20João%2C%20I%20want%20a%20spot%20at%20Arcoverdesign." target="_blank" rel="noopener" class="btn-lime-block"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> I'm interested</a>
-        <div class="pricing-annual"><strong>Annual option:</strong> pay annually and save 10%. Applied automatically at checkout.</div>
-        <p class="pricing-footnote">A senior designer costs $8–15k/month. Arcoverdesign delivers the same quality — AI-accelerated — for a fraction of that.</p>
+        <a href="https://wa.me/5561993734553?text=Hi%20João%2C%20I%20want%20a%20spot%20at%20Arcoverdesign." target="_blank" rel="noopener" class="btn-lime-block" data-wa-cta><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span data-i18n="pricing_cta_btn"> I'm interested</span></a>
+        <div class="pricing-annual" data-i18n-html="pricing_annual"><strong>Annual option:</strong> pay annually and save 10%. Applied automatically at checkout.</div>
+        <p class="pricing-footnote" data-i18n="pricing_footnote">A senior designer costs $8–15k/month. Arcoverdesign delivers the same quality — AI-accelerated — for a fraction of that.</p>
       </div>
       <div class="pricing-alt rr on" style="border-radius: 24px; background-color: rgb(14, 18, 20); border: 1px solid rgba(194, 252, 80, 0.5);">
         <div class="aurora-reveal" style="--aurora-photo: url('assets/aurora-card3.png');" aria-hidden="true"></div>
         <div class="alt-icon">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="#C2FC50"></path></svg>
         </div>
-        <div class="alt-title">Subscription not right for you?</div>
-        <p class="alt-desc">That's fine. If you have a project with a defined scope, we can quote separately. Send a brief with what you need, timeline, scope, and references, and we'll get back to you with a proposal within 24h.</p>
+        <div class="alt-title" data-i18n="alt_title">Subscription not right for you?</div>
+        <p class="alt-desc" data-i18n="alt_desc">That's fine. If you have a project with a defined scope, we can quote separately. Send a brief with what you need, timeline, scope, and references, and we'll get back to you with a proposal within 24h.</p>
         <div class="alt-pills">
-          <span class="alt-pill">Projects with defined start and end</span>
-          <span class="alt-pill">One-off redesign requests</span>
-          <span class="alt-pill">Landing page, pitch deck…</span>
-          <span class="alt-pill">Try before subscribing</span>
+          <span class="alt-pill" data-i18n="alt_pill1">Projects with defined start and end</span>
+          <span class="alt-pill" data-i18n="alt_pill2">One-off redesign requests</span>
+          <span class="alt-pill" data-i18n="alt_pill3">Landing page, pitch deck…</span>
+          <span class="alt-pill" data-i18n="alt_pill4">Try before subscribing</span>
         </div>
-        <a href="https://forms.gle/R9SaqyPj3usLgCZr5" target="_blank" rel="noopener" class="btn-outline-alt">Request a quote →</a>
+        <a href="https://forms.gle/R9SaqyPj3usLgCZr5" target="_blank" rel="noopener" class="btn-outline-alt" data-i18n="alt_cta">Request a quote →</a>
       </div>
     </div>
   </div>
@@ -2744,68 +2738,68 @@ document.addEventListener('DOMContentLoaded', function() {
 <!-- ════════════ FAQ ════════════ -->
 <section class="sec sec-top faq-section" style="padding: 100px 0 120px;">
   <div class="wrap">
-    <p class="eyebrow">FAQ</p>
-    <h2 class="section-h" style="margin-bottom: 0;">Frequently asked questions</h2>
+    <p class="eyebrow" data-i18n="faq_eyebrow">FAQ</p>
+    <h2 class="section-h" style="margin-bottom: 0;" data-i18n="faq_heading">Frequently asked questions</h2>
     <div class="faq-list">
 
       <div class="faq-item">
         <button class="faq-q">
-          <span>What is the subscription model?</span>
+          <span data-i18n="faq1_q">What is the subscription model?</span>
           <span class="faq-icon">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
           </span>
         </button>
-        <div class="faq-a">You pay a fixed monthly fee and get access to a dedicated designer. You can request as many projects as you want, one at a time. No long contracts, no bureaucracy.</div>
+        <div class="faq-a" data-i18n="faq1_a">You pay a fixed monthly fee and get access to a dedicated designer. You can request as many projects as you want, one at a time. No long contracts, no bureaucracy.</div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q">
-          <span>How long does a delivery take?</span>
+          <span data-i18n="faq2_q">How long does a delivery take?</span>
           <span class="faq-icon">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
           </span>
         </button>
-        <div class="faq-a">It depends on complexity. We assess with you after the brief and confirm the deadline before starting, no surprises. Simpler deliveries typically move in just a few days.</div>
+        <div class="faq-a" data-i18n="faq2_a">It depends on complexity. We assess with you after the brief and confirm the deadline before starting, no surprises. Simpler deliveries typically move in just a few days.</div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q">
-          <span>Can I cancel anytime?</span>
+          <span data-i18n="faq3_q">Can I cancel anytime?</span>
           <span class="faq-icon">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
           </span>
         </button>
-        <div class="faq-a">Yes. No commitment. You can pause or cancel at any time, with no fees or penalties.</div>
+        <div class="faq-a" data-i18n="faq3_a">Yes. No commitment. You can pause or cancel at any time, with no fees or penalties.</div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q">
-          <span>What tools do you use?</span>
+          <span data-i18n="faq4_q">What tools do you use?</span>
           <span class="faq-icon">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
           </span>
         </button>
-        <div class="faq-a">We mainly use Figma for design and Trello for backlog management. Every delivery includes a Loom walkthrough video explaining the design decisions.</div>
+        <div class="faq-a" data-i18n="faq4_a">We mainly use Figma for design and Trello for backlog management. Every delivery includes a Loom walkthrough video explaining the design decisions.</div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q">
-          <span>How many active requests can I have at once?</span>
+          <span data-i18n="faq5_q">How many active requests can I have at once?</span>
           <span class="faq-icon">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
           </span>
         </button>
-        <div class="faq-a">One active request at a time. But you can have an unlimited queue of requests, and we'll work through them as each one is approved.</div>
+        <div class="faq-a" data-i18n="faq5_a">One active request at a time. But you can have an unlimited queue of requests, and we'll work through them as each one is approved.</div>
       </div>
 
       <div class="faq-item">
         <button class="faq-q">
-          <span>Unlimited revisions, seriously?</span>
+          <span data-i18n="faq6_q">Unlimited revisions, seriously?</span>
           <span class="faq-icon">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 1V11M1 6H11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path></svg>
           </span>
         </button>
-        <div class="faq-a">Yes. We revise until you approve. The goal is for every delivery to be exactly as you imagined it.</div>
+        <div class="faq-a" data-i18n="faq6_a">Yes. We revise until you approve. The goal is for every delivery to be exactly as you imagined it.</div>
       </div>
 
     </div>
@@ -2817,14 +2811,14 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="hero-box" data-dot-grid="" style="position:relative;overflow:hidden; max-width:none;">
     <canvas class="dot-grid-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;" width="1345" height="483"></canvas>
     <div style="position:relative;z-index:1;">
-      <h2 class="hero-title cta-title">Start the design work<br>your product is <span style="color:var(--accent);font-style:italic;">waiting for</span>.</h2>
-      <p class="hero-sub">Limited spots. Next opening: July 15th.</p>
+      <h2 class="hero-title cta-title" data-i18n-html="cta_title">Start the design work<br>your product is <span style="color:var(--accent);font-style:italic;">waiting for</span>.</h2>
+      <p class="hero-sub" data-i18n="cta_sub">Limited spots. Next opening: July 15th.</p>
       <div class="hero-cta">
         <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
-          <a href="https://wa.me/5561993734553?text=Hi%20João%2C%20I%20want%20a%20spot%20at%20Arcoverdesign." target="_blank" rel="noopener" class="btn btn-hero"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> I'm interested</a>
-          <a href="#" onclick="openCalendly(event)" class="btn-white-outline">Book a 30-minute call</a>
+          <a href="https://wa.me/5561993734553?text=Hi%20João%2C%20I%20want%20a%20spot%20at%20Arcoverdesign." target="_blank" rel="noopener" class="btn btn-hero" data-wa-cta><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex-shrink:0;" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span data-i18n="cta_btn_wa"> I'm interested</span></a>
+          <a href="#" onclick="openCalendly(event)" class="btn-white-outline" data-i18n="cta_btn_call">Book a 30-minute call</a>
         </div>
-        <p class="hero-note">30-minute onboarding. First delivery with agreed timeline.</p>
+        <p class="hero-note" data-i18n="cta_note">30-minute onboarding. First delivery with agreed timeline.</p>
       </div>
     </div>
   </div>
@@ -2848,14 +2842,14 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
         <span class="footer-brand">Arcoverdesign</span>
       </div>
-      <div class="footer-tagline">The first UX/UI design subscription for SaaS teams in Latin America.</div>
+      <div class="footer-tagline" data-i18n="footer_tagline">The first UX/UI design subscription for SaaS teams in Latin America.</div>
     </div>
     <nav class="footer-center-links">
-      <a href="#how-it-works">How it works</a>
-      <a href="#pricing-full">Pricing</a>
-      <a href="#why">Why us</a>
-      <a href="#pricing">About</a>
-      <a href="#" onclick="openCalendly(event)">Book a call</a>
+      <a href="#how-it-works" data-i18n="footer_link_how">How it works</a>
+      <a href="#pricing-full" data-i18n="footer_link_pricing">Pricing</a>
+      <a href="#why" data-i18n="footer_link_why">Why us</a>
+      <a href="#pricing" data-i18n="footer_link_about">About</a>
+      <a href="#" onclick="openCalendly(event)" data-i18n="footer_link_cta">Book a call</a>
     </nav>
     <div class="footer-right-col">
       <div class="footer-langs">
@@ -2863,7 +2857,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <span onclick="switchLang(event,'pt','/pt/')">PT</span>
         <span onclick="switchLang(event,'es','/es/')">ES</span>
       </div>
-      <p class="footer-copy">© 2026 Arcoverdesign</p>
+      <p class="footer-copy" data-i18n="footer_copy">© 2026 Arcoverdesign</p>
     </div>
   </footer>
 </div>
@@ -3197,9 +3191,457 @@ document.addEventListener('DOMContentLoaded', function() {
 <script>
 function switchLang(e, locale, path) {
   if (e && e.preventDefault) e.preventDefault();
-  localStorage.setItem('arcover-locale', locale);
   window.location.replace(path);
 }
+</script>
+
+<!-- ═══ I18N ═══ -->
+<script>
+(function () {
+  var i18n = {
+    en: {
+      page_title: 'Arcoverdesign — UX/UI Design by Subscription',
+      nav_how_it_works: 'How it works',
+      nav_pricing: 'Pricing',
+      nav_why: 'Why us',
+      nav_about: 'About',
+      nav_cta: 'Book a call',
+      nav_hamburger_aria: 'Open menu',
+      hero_eyebrow: 'Senior Product Designer · UI/UX · SaaS · Fintech · Edtech',
+      hero_sub: 'Design by subscription.',
+      hero_cta_btn: " I'm interested",
+      hero_note: 'Limited spots · Chat on WhatsApp · PT / EN / ES',
+      how_heading: "Most startups don't need a full design team. They need a <span style=\"color:var(--accent)\">senior designer</span> who actually delivers.",
+      card1_title: 'Subscribe',
+      card1_body: 'Subscribe to a plan and request as many designs as you want. One request at a time.',
+      card1_img_alt: 'Subscription panel',
+      card2_title: 'Request',
+      card2_body: 'Request anything, from mobile apps to logos.',
+      card3_title: 'Receive',
+      card3_body: 'Receive your design on average within two business days.',
+      card3_img_alt: 'Delivery mockup',
+      tag_product_design: 'Product design',
+      tag_web_design: 'Web design',
+      tag_landing_pages: 'Landing pages',
+      tag_presentations: 'Presentations',
+      tag_social_media: 'Social media',
+      tag_ad_creatives: 'Ad creatives',
+      tag_graphic_design: 'Graphic design',
+      tag_mobile_apps: 'Mobile apps',
+      tag_email_marketing: 'Email marketing',
+      feature_eyebrow: 'What is Arcoverdesign',
+      feature_title: 'One subscription. <span style="color:var(--accent)">On-demand design</span> at your pace.',
+      feature_desc1: 'A fixed monthly fee. A product designer dedicated to your project, every day, integrated into your workflow.',
+      feature_desc2: 'No proposals. No timesheets. No surprises at the end of the month.',
+      stat1: '30-min onboarding',
+      stat2: 'Daily progress',
+      stat3: 'Fixed monthly price',
+      services_eyebrow: 'About',
+      services_heading: 'Everything your product needs, in one subscription',
+      service1: 'App screens, dashboards, and flows',
+      service2: 'Onboarding and activation flows',
+      service3: 'Landing pages and pricing pages',
+      service4: 'Design systems and component libraries in Figma',
+      service5: 'UX research session (1 per month)',
+      service6: 'Prototypes and interactive flows',
+      service7: 'Dev handoff with annotated specs in Figma',
+      service8: 'Loom walkthrough video with every delivery',
+      marquee_word1: 'Quality',
+      marquee_word2: 'Efficiency',
+      marquee_word3: 'Agility',
+      process_eyebrow: 'How it works',
+      process_heading: 'Design that moves forward every day.',
+      step1_title: 'Subscribe online',
+      step1_desc: 'Pay online. Pricing is public, no sales call required.',
+      step2_title: 'Onboarding call*',
+      step2_desc: 'A 30-minute call. We review your brand, set up Figma, and build the design backlog in Trello. You start delivering on day one.',
+      step3_title: 'Send requests, receive deliveries*',
+      step3_desc: 'Request via a simple brief. Your CS confirms the estimated deadline before starting. Your designer delivers in Figma, with a Loom video explaining each decision.',
+      step4_title: 'Review and repeat if needed',
+      step4_desc: 'Unlimited revisions until you approve. Your designer learns the product in depth and gets faster with every sprint.',
+      testi_eyebrow: 'Clients',
+      testi_heading: 'What they say about us',
+      testi1_quote: '"We went from Canva screens to a real design system in 6 weeks. Investors noticed."',
+      testi1_name: 'Rafael S.',
+      testi1_role: 'CEO, SaaS Startup',
+      testi2_quote: '"Loom walkthroughs cut our review cycles in half. I comment on Figma at night and already have the update in the morning."',
+      testi2_name: 'Marina C.',
+      testi2_role: 'CPO, Fintech',
+      why_label: 'Why Arcoverdesign',
+      why_heading: 'The only fixed-price <span style="white-space:nowrap">UX/UI</span> design subscription in Latin America.',
+      why_photo_alt: 'Designer working in collaboration',
+      why_stat_desc: 'Products delivered to startups and scale-ups across Latin America, with a single plan, no surprises at end of month.',
+      why_support_title: 'Support that truly speaks your language.',
+      why_support_desc: 'Every client has a dedicated Customer Success Executive, with native Portuguese and Spanish and fluent English. No intermediaries, no translation noise. A real person who knows your project and responds the same day, in the language you think in.',
+      pricing_label: 'Plans & pricing',
+      pricing_heading: 'One plan. Everything included. <span class="accent-word">No extra charges.</span>',
+      pricing_badge: '★ Featured plan',
+      pricing_name: 'Design Partner',
+      pricing_amount_html: '$1,490<span>/mo</span>',
+      pricing_note: 'Cancel anytime. No long-term contract.',
+      pricing_feat1: ' Unlimited requests in queue',
+      pricing_feat2: ' Unlimited revisions',
+      pricing_feat3: ' Dedicated senior designer, present every day on your project',
+      pricing_feat4: ' 1 UX review per month (flows, friction points, and opportunities)',
+      pricing_feat5: ' Deadline confirmed before each delivery starts',
+      pricing_feat6: ' 1 active design request at a time',
+      pricing_feat7: ' Figma + Trello + Slack + Loom',
+      pricing_feat8: ' PT / EN / ES',
+      pricing_feat9: ' Dedicated Customer Success Executive: native PT & ES, fluent EN',
+      pricing_feat10: ' Pause or cancel anytime, penalty-free',
+      pricing_cta_btn: " I'm interested",
+      pricing_annual: '<strong>Annual option:</strong> pay annually and save 10%. Applied automatically at checkout.',
+      pricing_footnote: 'A senior designer costs $8–15k/month. Arcoverdesign delivers the same quality — AI-accelerated — for a fraction of that.',
+      alt_title: 'Subscription not right for you?',
+      alt_desc: "That's fine. If you have a project with a defined scope, we can quote separately. Send a brief with what you need, timeline, scope, and references, and we'll get back to you with a proposal within 24h.",
+      alt_pill1: 'Projects with defined start and end',
+      alt_pill2: 'One-off redesign requests',
+      alt_pill3: 'Landing page, pitch deck…',
+      alt_pill4: 'Try before subscribing',
+      alt_cta: 'Request a quote →',
+      faq_eyebrow: 'FAQ',
+      faq_heading: 'Frequently asked questions',
+      faq1_q: 'What is the subscription model?',
+      faq1_a: 'You pay a fixed monthly fee and get access to a dedicated designer. You can request as many projects as you want, one at a time. No long contracts, no bureaucracy.',
+      faq2_q: 'How long does a delivery take?',
+      faq2_a: 'It depends on complexity. We assess with you after the brief and confirm the deadline before starting, no surprises. Simpler deliveries typically move in just a few days.',
+      faq3_q: 'Can I cancel anytime?',
+      faq3_a: 'Yes. No commitment. You can pause or cancel at any time, with no fees or penalties.',
+      faq4_q: 'What tools do you use?',
+      faq4_a: 'We mainly use Figma for design and Trello for backlog management. Every delivery includes a Loom walkthrough video explaining the design decisions.',
+      faq5_q: 'How many active requests can I have at once?',
+      faq5_a: "One active request at a time. But you can have an unlimited queue of requests, and we'll work through them as each one is approved.",
+      faq6_q: 'Unlimited revisions, seriously?',
+      faq6_a: 'Yes. We revise until you approve. The goal is for every delivery to be exactly as you imagined it.',
+      cta_title: 'Start the design work<br>your product is <span style="color:var(--accent);font-style:italic;">waiting for</span>.',
+      cta_sub: 'Limited spots. Next opening: July 15th.',
+      cta_btn_wa: " I'm interested",
+      cta_btn_call: 'Book a 30-minute call',
+      cta_note: '30-minute onboarding. First delivery with agreed timeline.',
+      footer_tagline: 'The first UX/UI design subscription for SaaS teams in Latin America.',
+      footer_link_how: 'How it works',
+      footer_link_pricing: 'Pricing',
+      footer_link_why: 'Why us',
+      footer_link_about: 'About',
+      footer_link_cta: 'Book a call',
+      footer_copy: '© 2026 Arcoverdesign',
+      whatsapp_text: "Hi%20Jo%C3%A3o%2C%20I%20want%20a%20spot%20at%20Arcoverdesign."
+    },
+    pt: {
+      page_title: 'Arcoverdesign — Design UX/UI por Assinatura',
+      nav_how_it_works: 'Como funciona',
+      nav_pricing: 'Planos',
+      nav_why: 'Por que nós',
+      nav_about: 'Sobre',
+      nav_cta: 'Agendar call',
+      nav_hamburger_aria: 'Abrir menu',
+      hero_eyebrow: 'Senior Product Designer · UI/UX · SaaS · Fintech · Edtech',
+      hero_sub: 'Design por assinatura.',
+      hero_cta_btn: ' Tenho interesse',
+      hero_note: 'Vagas limitadas · Fale no WhatsApp · PT / EN / ES',
+      how_heading: 'A maioria das startups não precisa de um time de design completo. Precisa de um <span style="color:var(--accent)">designer sênior</span> que realmente entrega.',
+      card1_title: 'Assinar',
+      card1_body: 'Assine um plano e solicite quantos designs desejar. Um pedido por vez.',
+      card1_img_alt: 'Painel de assinatura',
+      card2_title: 'Solicitar',
+      card2_body: 'Solicite o que quiser, desde aplicativos móveis até logotipos.',
+      card3_title: 'Receber',
+      card3_body: 'Receba seu design em média dentro de dois dias úteis.',
+      card3_img_alt: 'Mockup de entrega',
+      tag_product_design: 'Design de produto',
+      tag_web_design: 'Web design',
+      tag_landing_pages: 'Landing pages',
+      tag_presentations: 'Apresentações',
+      tag_social_media: 'Redes sociais',
+      tag_ad_creatives: 'Criativos de anúncio',
+      tag_graphic_design: 'Design gráfico',
+      tag_mobile_apps: 'Apps mobile',
+      tag_email_marketing: 'E-mail marketing',
+      feature_eyebrow: 'O que é Arcoverdesign',
+      feature_title: 'Uma assinatura. <span style="color:var(--accent)">Design sob demanda</span> no seu ritmo.',
+      feature_desc1: 'Uma mensalidade fixa. Um designer de produto dedicado ao seu projeto, todos os dias, integrado ao seu fluxo de trabalho.',
+      feature_desc2: 'Sem propostas. Sem timesheet. Sem susto no fechamento do mês.',
+      stat1: '30 min de integração',
+      stat2: 'Progresso diário',
+      stat3: 'Preço fixo mensal',
+      services_eyebrow: 'Sobre',
+      services_heading: 'Tudo o que o seu produto precisa, em uma só assinatura',
+      service1: 'Telas, dashboards e fluxos de app',
+      service2: 'Fluxos de onboarding e ativação',
+      service3: 'Landing pages e páginas de planos',
+      service4: 'Design systems e bibliotecas de componentes no Figma',
+      service5: 'Sessão de pesquisa UX (1 por mês)',
+      service6: 'Protótipos e fluxos interativos',
+      service7: 'Handoff para dev com especificações anotadas no Figma',
+      service8: 'Vídeo Loom de walkthrough em cada entrega',
+      marquee_word1: 'Qualidade',
+      marquee_word2: 'Eficiência',
+      marquee_word3: 'Agilidade',
+      process_eyebrow: 'Como funciona',
+      process_heading: 'Design que avança todo dia.',
+      step1_title: 'Assine online',
+      step1_desc: 'Pague online. O preço é público, sem reunião de vendas.',
+      step2_title: 'Call de onboarding*',
+      step2_desc: 'Uma call de 30 minutos. Revisamos a sua marca, configuramos o Figma e montamos o backlog de design no Trello. Você começa a produzir no primeiro dia.',
+      step3_title: 'Envie pedidos, receba entregas*',
+      step3_desc: 'Solicite via brief simples. Seu CS confirma o prazo estimado antes de começar. Seu designer assume e entrega no Figma, com vídeo no Loom explicando cada decisão.',
+      step4_title: 'Revise e repita caso necessário',
+      step4_desc: 'Revisões ilimitadas até você aprovar. Seu designer aprende o produto em profundidade e fica cada vez mais rápido a cada sprint.',
+      testi_eyebrow: 'Clientes',
+      testi_heading: 'O que dizem sobre nós',
+      testi1_quote: '"Saímos de telas feitas no Canva para um design system de verdade em 6 semanas. Os investidores perceberam."',
+      testi1_name: 'Rafael S.',
+      testi1_role: 'CEO, Startup SaaS',
+      testi2_quote: '"Os walkthroughs em Loom cortaram nossos ciclos de revisão pela metade. Comento no Figma à noite e já tenho a atualização de manhã."',
+      testi2_name: 'Marina C.',
+      testi2_role: 'CPO, Fintech',
+      why_label: 'Por que Arcoverdesign',
+      why_heading: 'A única assinatura de design <span style="white-space:nowrap">UX - UI</span> com preço fixo na América Latina.',
+      why_photo_alt: 'Designer trabalhando em colaboração',
+      why_stat_desc: 'Produtos entregues para startups e scale-ups da América Latina, com um único plano, sem surpresas no final do mês.',
+      why_support_title: 'Atendimento que fala a sua língua de verdade.',
+      why_support_desc: 'Cada cliente tem um Executivo de Sucesso do Cliente dedicado, com português e espanhol nativos e inglês fluente. Sem intermediários, sem ruídos de tradução. Uma pessoa real que conhece o seu projeto e responde no mesmo dia, no idioma em que você pensa.',
+      pricing_label: 'Planos e preços',
+      pricing_heading: 'Um plano. Tudo incluído. <span class="accent-word">Sem cobranças extras.</span>',
+      pricing_badge: '★ Plano em destaque',
+      pricing_name: 'Parceiro de Design',
+      pricing_amount_html: 'R$ 8.700<span>/mês</span>',
+      pricing_note: 'Cancele quando quiser. Sem contrato longo.',
+      pricing_feat1: ' Solicitações ilimitadas na fila',
+      pricing_feat2: ' Revisões ilimitadas',
+      pricing_feat3: ' Designer sênior dedicado, presente todos os dias no seu projeto',
+      pricing_feat4: ' 1 revisão de UX por mês (fluxos, fricções e oportunidades)',
+      pricing_feat5: ' Prazo confirmado antes de cada entrega começar',
+      pricing_feat6: ' 1 solicitação de design ativa por vez',
+      pricing_feat7: ' Figma + Trello + Slack + Loom',
+      pricing_feat8: ' PT / EN / ES',
+      pricing_feat9: ' Executivo de Sucesso do Cliente dedicado: PT e ES nativos, EN fluente',
+      pricing_feat10: ' Pause ou cancele quando quiser, sem multa',
+      pricing_cta_btn: ' Tenho interesse',
+      pricing_annual: '<strong>Opção anual:</strong> pague anualmente e economize 10%. Aplicado automaticamente no pagamento.',
+      pricing_footnote: 'Designer sênior CLT custa R$ 10–18k/mês. A Arcoverdesign entrega o mesmo resultado — sem encargos, sem risco.',
+      alt_title: 'A assinatura não é para você?',
+      alt_desc: 'Tudo bem. Se você tem um projeto com escopo definido, podemos cotar separadamente. Mande um briefing com o que precisa, prazo, escopo e referências, e retornamos com uma proposta em até 24h.',
+      alt_pill1: 'Projetos com início e fim definidos',
+      alt_pill2: 'Demandas pontuais de redesign',
+      alt_pill3: 'Landing page, pitch deck…',
+      alt_pill4: 'Quem quer testar antes de assinar',
+      alt_cta: 'Enviar briefing →',
+      faq_eyebrow: 'FAQ',
+      faq_heading: 'Perguntas frequentes',
+      faq1_q: 'O que é o modelo de assinatura?',
+      faq1_a: 'Você paga uma mensalidade fixa e tem acesso a um designer dedicado. Pode solicitar quantos projetos quiser, um de cada vez. Sem contratos longos, sem burocracia.',
+      faq2_q: 'Quanto tempo leva uma entrega?',
+      faq2_a: 'Depende da complexidade. Avaliamos junto com você após o brief e confirmamos o prazo antes de começar, sem surpresas. Entregas mais simples costumam avançar em poucos dias.',
+      faq3_q: 'Posso cancelar quando quiser?',
+      faq3_a: 'Sim. Não há fidelidade. Você pode pausar ou cancelar a qualquer momento, sem taxas ou penalidades.',
+      faq4_q: 'Quais ferramentas vocês usam?',
+      faq4_a: 'Trabalhamos principalmente com Figma para design e Trello para gestão de backlog. Cada entrega inclui um vídeo Loom de walkthrough explicando as decisões de design.',
+      faq5_q: 'Quantos pedidos posso ter ativos ao mesmo tempo?',
+      faq5_a: 'Um pedido ativo por vez. Mas você pode ter uma fila ilimitada de pedidos e nós vamos avançando conforme cada um é aprovado.',
+      faq6_q: 'Revisões ilimitadas, a sério?',
+      faq6_a: 'Sim. Revisamos até você aprovar. O objetivo é que cada entrega esteja exatamente do jeito que você imaginou.',
+      cta_title: 'Comece o trabalho de design<br>que o seu produto está <span style="color:var(--accent);font-style:italic;">precisando</span>.',
+      cta_sub: 'Vagas limitadas. Próxima abertura: 15 de julho.',
+      cta_btn_wa: ' Tenho interesse',
+      cta_btn_call: 'Agendar call de 30 minutos',
+      cta_note: 'Onboarding em 30 minutos. Primeira entrega com prazo acordado.',
+      footer_tagline: 'A primeira assinatura de design UX/UI para times de SaaS na América Latina.',
+      footer_link_how: 'Como funciona',
+      footer_link_pricing: 'Planos',
+      footer_link_why: 'Por que nós',
+      footer_link_about: 'Sobre',
+      footer_link_cta: 'Agendar call',
+      footer_copy: '© 2026 Arcoverdesign',
+      whatsapp_text: "Ol%C3%A1%20Jo%C3%A3o%2C%20quero%20minha%20vaga%20na%20Arcoverdesign."
+    },
+    es: {
+      page_title: 'Arcoverdesign — Diseño UX/UI por Suscripción',
+      nav_how_it_works: 'Cómo funciona',
+      nav_pricing: 'Planes',
+      nav_why: 'Por qué nosotros',
+      nav_about: 'Nosotros',
+      nav_cta: 'Agendar llamada',
+      nav_hamburger_aria: 'Abrir menú',
+      hero_eyebrow: 'Senior Product Designer · UI/UX · SaaS · Fintech · Edtech',
+      hero_sub: 'Diseño por suscripción.',
+      hero_cta_btn: ' Tengo interés',
+      hero_note: 'Cupos limitados · Escribe por WhatsApp · PT / EN / ES',
+      how_heading: 'La mayoría de las startups no necesitan un equipo de diseño completo. Necesitan un <span style="color:var(--accent)">diseñador senior</span> que realmente entregue.',
+      card1_title: 'Suscribirse',
+      card1_body: 'Suscríbete a un plan y solicita todos los diseños que quieras. Un pedido a la vez.',
+      card1_img_alt: 'Panel de suscripción',
+      card2_title: 'Solicitar',
+      card2_body: 'Solicita lo que quieras, desde apps móviles hasta logotipos.',
+      card3_title: 'Recibir',
+      card3_body: 'Recibe tu diseño en promedio en dos días hábiles.',
+      card3_img_alt: 'Mockup de entrega',
+      tag_product_design: 'Diseño de producto',
+      tag_web_design: 'Web design',
+      tag_landing_pages: 'Landing pages',
+      tag_presentations: 'Presentaciones',
+      tag_social_media: 'Redes sociales',
+      tag_ad_creatives: 'Creativos para anuncios',
+      tag_graphic_design: 'Diseño gráfico',
+      tag_mobile_apps: 'Apps mobile',
+      tag_email_marketing: 'Email marketing',
+      feature_eyebrow: '¿Qué es Arcoverdesign?',
+      feature_title: 'Una suscripción. <span style="color:var(--accent)">Diseño bajo demanda</span> a tu ritmo.',
+      feature_desc1: 'Una tarifa mensual fija. Un diseñador de producto dedicado a tu proyecto, todos los días, integrado a tu flujo de trabajo.',
+      feature_desc2: 'Sin propuestas. Sin timesheets. Sin sustos al cierre del mes.',
+      stat1: '30 min de integración',
+      stat2: 'Progreso diario',
+      stat3: 'Precio fijo mensual',
+      services_eyebrow: 'Nosotros',
+      services_heading: 'Todo lo que tu producto necesita, en una sola suscripción',
+      service1: 'Pantallas de app, dashboards y flujos',
+      service2: 'Flujos de onboarding y activación',
+      service3: 'Landing pages y páginas de precios',
+      service4: 'Design systems y bibliotecas de componentes en Figma',
+      service5: 'Sesión de investigación UX (1 por mes)',
+      service6: 'Prototipos y flujos interactivos',
+      service7: 'Handoff para dev con especificaciones anotadas en Figma',
+      service8: 'Video Loom de walkthrough en cada entrega',
+      marquee_word1: 'Calidad',
+      marquee_word2: 'Eficiencia',
+      marquee_word3: 'Agilidad',
+      process_eyebrow: 'Cómo funciona',
+      process_heading: 'Diseño que avanza todos los días.',
+      step1_title: 'Suscríbete en línea',
+      step1_desc: 'Paga en línea. El precio es público, sin llamada de ventas.',
+      step2_title: 'Llamada de onboarding*',
+      step2_desc: 'Una llamada de 30 minutos. Revisamos tu marca, configuramos Figma y armamos el backlog de diseño en Trello. Empiezas a producir desde el primer día.',
+      step3_title: 'Envía pedidos, recibe entregas*',
+      step3_desc: 'Solicita mediante un brief sencillo. Tu CS confirma el plazo estimado antes de empezar. Tu diseñador entrega en Figma, con un video en Loom explicando cada decisión.',
+      step4_title: 'Revisa y repite si es necesario',
+      step4_desc: 'Revisiones ilimitadas hasta que apruebes. Tu diseñador aprende el producto en profundidad y se vuelve cada vez más rápido con cada sprint.',
+      testi_eyebrow: 'Clientes',
+      testi_heading: 'Lo que dicen de nosotros',
+      testi1_quote: '"Pasamos de pantallas hechas en Canva a un design system real en 6 semanas. Los inversores lo notaron."',
+      testi1_name: 'Rafael S.',
+      testi1_role: 'CEO, Startup SaaS',
+      testi2_quote: '"Los walkthroughs en Loom redujeron nuestros ciclos de revisión a la mitad. Comento en Figma por la noche y ya tengo la actualización por la mañana."',
+      testi2_name: 'Marina C.',
+      testi2_role: 'CPO, Fintech',
+      why_label: 'Por qué Arcoverdesign',
+      why_heading: 'La única suscripción de diseño <span style="white-space:nowrap">UX/UI</span> con precio fijo en América Latina.',
+      why_photo_alt: 'Diseñador trabajando en colaboración',
+      why_stat_desc: 'Productos entregados a startups y scale-ups de América Latina, con un único plan, sin sorpresas al final del mes.',
+      why_support_title: 'Atención que realmente habla tu idioma.',
+      why_support_desc: 'Cada cliente tiene un Ejecutivo de Customer Success dedicado, con portugués y español nativos e inglés fluido. Sin intermediarios, sin ruido de traducción. Una persona real que conoce tu proyecto y responde el mismo día, en el idioma en que piensas.',
+      pricing_label: 'Planes y precios',
+      pricing_heading: 'Un plan. Todo incluido. <span class="accent-word">Sin cargos extras.</span>',
+      pricing_badge: '★ Plan destacado',
+      pricing_name: 'Socio de Diseño',
+      pricing_amount_html: '$1,490<span>/mes</span>',
+      pricing_note: 'Cancela cuando quieras. Sin contrato largo.',
+      pricing_feat1: ' Solicitudes ilimitadas en cola',
+      pricing_feat2: ' Revisiones ilimitadas',
+      pricing_feat3: ' Diseñador senior dedicado, presente todos los días en tu proyecto',
+      pricing_feat4: ' 1 revisión de UX por mes (flujos, fricciones y oportunidades)',
+      pricing_feat5: ' Plazo confirmado antes de comenzar cada entrega',
+      pricing_feat6: ' 1 solicitud de diseño activa a la vez',
+      pricing_feat7: ' Figma + Trello + Slack + Loom',
+      pricing_feat8: ' PT / EN / ES',
+      pricing_feat9: ' Ejecutivo de Customer Success dedicado: PT y ES nativos, EN fluido',
+      pricing_feat10: ' Pausa o cancela cuando quieras, sin penalidad',
+      pricing_cta_btn: ' Tengo interés',
+      pricing_annual: '<strong>Opción anual:</strong> paga anualmente y ahorra 10%. Aplicado automáticamente al pagar.',
+      pricing_footnote: 'Un diseñador senior de planta cuesta $5–10k/mes. Arcoverdesign entrega el mismo resultado — sin riesgos, sin contratos largos.',
+      alt_title: '¿La suscripción no es para ti?',
+      alt_desc: 'Está bien. Si tienes un proyecto con alcance definido, podemos cotizar por separado. Manda un brief con lo que necesitas, plazo, alcance y referencias, y te respondemos con una propuesta en hasta 24h.',
+      alt_pill1: 'Proyectos con inicio y fin definidos',
+      alt_pill2: 'Demandas puntuales de rediseño',
+      alt_pill3: 'Landing page, pitch deck…',
+      alt_pill4: 'Quienes quieren probar antes de suscribirse',
+      alt_cta: 'Enviar brief →',
+      faq_eyebrow: 'FAQ',
+      faq_heading: 'Preguntas frecuentes',
+      faq1_q: '¿Qué es el modelo de suscripción?',
+      faq1_a: 'Pagas una tarifa mensual fija y tienes acceso a un diseñador dedicado. Puedes solicitar todos los proyectos que quieras, uno a la vez. Sin contratos largos, sin burocracia.',
+      faq2_q: '¿Cuánto tiempo tarda una entrega?',
+      faq2_a: 'Depende de la complejidad. Lo evaluamos contigo después del brief y confirmamos el plazo antes de comenzar, sin sorpresas. Las entregas más simples suelen avanzar en pocos días.',
+      faq3_q: '¿Puedo cancelar cuando quiera?',
+      faq3_a: 'Sí. No hay fidelidad. Puedes pausar o cancelar en cualquier momento, sin cargos ni penalidades.',
+      faq4_q: '¿Qué herramientas usan?',
+      faq4_a: 'Trabajamos principalmente con Figma para diseño y Trello para la gestión del backlog. Cada entrega incluye un video Loom de walkthrough explicando las decisiones de diseño.',
+      faq5_q: '¿Cuántos pedidos puedo tener activos al mismo tiempo?',
+      faq5_a: 'Un pedido activo a la vez. Pero puedes tener una cola ilimitada de pedidos y vamos avanzando conforme se aprueba cada uno.',
+      faq6_q: '¿Revisiones ilimitadas, en serio?',
+      faq6_a: 'Sí. Revisamos hasta que apruebes. El objetivo es que cada entrega esté exactamente como la imaginaste.',
+      cta_title: 'Empieza el trabajo de diseño<br>que tu producto está <span style="color:var(--accent);font-style:italic;">esperando</span>.',
+      cta_sub: 'Cupos limitados. Próxima apertura: 15 de julio.',
+      cta_btn_wa: ' Tengo interés',
+      cta_btn_call: 'Agendar llamada de 30 minutos',
+      cta_note: 'Onboarding en 30 minutos. Primera entrega con plazo acordado.',
+      footer_tagline: 'La primera suscripción de diseño UX/UI para equipos de SaaS en América Latina.',
+      footer_link_how: 'Cómo funciona',
+      footer_link_pricing: 'Planes',
+      footer_link_why: 'Por qué nosotros',
+      footer_link_about: 'Nosotros',
+      footer_link_cta: 'Agendar llamada',
+      footer_copy: '© 2026 Arcoverdesign',
+      whatsapp_text: "Hola%20Jo%C3%A3o%2C%20quiero%20un%20lugar%20en%20Arcoverdesign."
+    }
+  };
+
+  var lang = window.__lang || 'en';
+  var t = i18n[lang];
+  if (!t) return;
+
+  // Text content
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+
+  // Inner HTML (for strings with spans/formatting)
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n-html');
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  // WhatsApp CTA links
+  var waUrl = 'https://wa.me/5561993734553?text=' + t.whatsapp_text;
+  document.querySelectorAll('[data-wa-cta]').forEach(function(el) {
+    el.href = waUrl;
+  });
+
+  // Image alts
+  var img1 = document.querySelector('[data-card1-img]');
+  if (img1 && t.card1_img_alt) img1.setAttribute('alt', t.card1_img_alt);
+  var img3 = document.querySelector('[data-card3-img]');
+  if (img3 && t.card3_img_alt) img3.setAttribute('alt', t.card3_img_alt);
+  var whyPhoto = document.querySelector('[data-why-photo]');
+  if (whyPhoto && t.why_photo_alt) whyPhoto.setAttribute('alt', t.why_photo_alt);
+
+  // Nav hamburger aria-label
+  var ham = document.getElementById('navHamburger');
+  if (ham && t.nav_hamburger_aria) ham.setAttribute('aria-label', t.nav_hamburger_aria);
+
+  // Update html lang attribute
+  document.documentElement.lang = lang;
+
+  // Update page title
+  if (t.page_title) document.title = t.page_title;
+
+  // lang-switcher active state
+  document.querySelectorAll('.lang-switcher a').forEach(function(a) {
+    a.classList.remove('active');
+    var href = a.getAttribute('href') || '';
+    if (lang === 'en' && (href === '/' || href === '')) a.classList.add('active');
+    else if (lang === 'pt' && href.includes('/pt')) a.classList.add('active');
+    else if (lang === 'es' && href.includes('/es')) a.classList.add('active');
+  });
+  // footer-langs active state
+  document.querySelectorAll('.footer-langs span').forEach(function(s) {
+    s.classList.remove('active');
+    var onclick = s.getAttribute('onclick') || '';
+    if (lang === 'en' && onclick.includes("'en'")) s.classList.add('active');
+    else if (lang === 'pt' && onclick.includes("'pt'")) s.classList.add('active');
+    else if (lang === 'es' && onclick.includes("'es'")) s.classList.add('active');
+  });
+})();
 </script>
 
 <!-- ═══ HERO LOGO — LETTER HOVER HIGHLIGHT ═══ -->
