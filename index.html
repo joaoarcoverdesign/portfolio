@@ -39,7 +39,9 @@
       _calScrollY = window.scrollY;
       document.documentElement.classList.add('no-scroll');
       document.body.style.top = '-' + _calScrollY + 'px';
-      Calendly.initPopupWidget({ url: CALENDLY_URL });
+      var lang = window.__lang || 'en';
+      var locale = lang === 'pt' ? 'pt-BR' : lang === 'es' ? 'es' : 'en';
+      Calendly.initPopupWidget({ url: CALENDLY_URL + '?locale=' + locale });
       // Restore scroll when overlay is removed
       var observer = new MutationObserver(function() {
         if (!document.querySelector('.calendly-overlay')) {
