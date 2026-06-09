@@ -3328,6 +3328,7 @@ function switchLang(e, locale, path) {
       footer_link_about: 'About',
       footer_link_cta: 'Book a call',
       footer_copy: '© 2026 Arcoverdesign',
+      whatsapp_number: '5561993734553',
       whatsapp_text: "Hi%20Jo%C3%A3o%2C%20I%20want%20a%20spot%20at%20Arcoverdesign."
     },
     pt: {
@@ -3456,6 +3457,7 @@ function switchLang(e, locale, path) {
       footer_link_about: 'Sobre',
       footer_link_cta: 'Agendar call',
       footer_copy: '© 2026 Arcoverdesign',
+      whatsapp_number: '5561993734553',
       whatsapp_text: "Ol%C3%A1%20Jo%C3%A3o%2C%20quero%20minha%20vaga%20na%20Arcoverdesign."
     },
     es: {
@@ -3584,6 +3586,7 @@ function switchLang(e, locale, path) {
       footer_link_about: 'Nosotros',
       footer_link_cta: 'Agendar llamada',
       footer_copy: '© 2026 Arcoverdesign',
+      whatsapp_number: '5561998765055',
       whatsapp_text: "Hola%20Jo%C3%A3o%2C%20quiero%20un%20lugar%20en%20Arcoverdesign."
     }
   };
@@ -3605,7 +3608,7 @@ function switchLang(e, locale, path) {
   });
 
   // WhatsApp CTA links
-  var waUrl = 'https://wa.me/5561993734553?text=' + t.whatsapp_text;
+  var waUrl = 'https://wa.me/' + t.whatsapp_number + '?text=' + t.whatsapp_text;
   document.querySelectorAll('[data-wa-cta]').forEach(function(el) {
     el.href = waUrl;
   });
